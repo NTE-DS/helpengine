@@ -1,0 +1,223 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B232BD2A-44E0-45C4-8C4A-1BC074EFCF7A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DocExplorer.Resources.HelpAPI</RootNamespace>
+    <AssemblyName>DocExplorer.Resources.HelpAPI</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\bin\Debug\Common8\Help5\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\bin\Release\Common8\Help5\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ICSharpCode.SharpZipLib">
+      <HintPath>..\..\Libraries\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="ProtocolPlugin">
+      <HintPath>..\..\Libraries\ProtocolPlugin.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CommonResources.cs" />
+    <Compile Include="Exceptions\AlreadyLoadedCollectionException.cs" />
+    <Compile Include="Exceptions\CannotManageRegistryException.cs" />
+    <Compile Include="Favorite.cs" />
+    <Compile Include="FavoriteFolder.cs" />
+    <Compile Include="Filter.cs" />
+    <Compile Include="FilterParam.cs" />
+    <Compile Include="Help.cs" />
+    <Compile Include="Exceptions\HelpCollectionNotValidException.cs" />
+    <Compile Include="HelpFile.cs" />
+    <Compile Include="Exceptions\HelpFileInstanceNotACompiledHelpException.cs" />
+    <Compile Include="Exceptions\HelpFileInstanceNotANamespaceException.cs" />
+    <Compile Include="HelpFileType.cs" />
+    <Compile Include="HelpInstaller.cs" />
+    <Compile Include="HelpNamespace.cs" />
+    <Compile Include="HelpObjectFile.cs" />
+    <Compile Include="HelpScheme.cs" />
+    <Compile Include="HTMLMetaParser.cs" />
+    <Compile Include="IHelpUi.cs" />
+    <Compile Include="IIdentify.cs" />
+    <Compile Include="IndexNode.cs" />
+    <Compile Include="ISearch.cs" />
+    <Compile Include="ITOCNode.cs" />
+    <Compile Include="Exceptions\NamespaceDoesNotExistsException.cs" />
+    <Compile Include="NodeIcons.Designer.cs">
+      <DependentUpon>NodeIcons.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="NodeIconServices.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SearchEngine.cs" />
+    <Compile Include="SearchLocalHelp.cs" />
+    <Compile Include="Settings.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="NodeIcons.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>NodeIcons.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="XSDs\Help42Extensions.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="XSDs\Help5Extensions.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\icon_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_10.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_11.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_12.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_13.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_14.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_15.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_17.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_18.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_19.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_21.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_22.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_23.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_25.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_26.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_27.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_28.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_30.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_31.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_33.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_34.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_35.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_36.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_37.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_38.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_7.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_8.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_9.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

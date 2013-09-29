@@ -1,0 +1,227 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://schemas.nasutek.com/2013/Help5/Help42Extensions"
+  elementFormDefault="qualified" xmlns="http://schemas.nasutek.com/2013/Help5/Help42Extensions"
+  xmlns:mstns="http://schemas.nasutek.com/2013/Help5/Help42Extensions"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:annotation>
+    <xs:documentation>Contains any elements used by the original Help 4.2 Specification. Most of the Help 4.2 Schema contains items for Table of Contents, Indexes, and Help File Definitions.</xs:documentation>
+  </xs:annotation>
+  <xs:simpleType name="TOCNodeType">
+    <xs:annotation>
+      <xs:documentation>TOC Node Type</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="TOC">
+        <xs:annotation>
+          <xs:documentation>Creates a Table Of Contents Link to a specific TOC from a Compiled Help File. The format of URL is HelpName:TOC\Path.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Link">
+        <xs:annotation>
+          <xs:documentation>Creates a generic link to content in the help file. This is the default TOC type.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="IndexType">
+    <xs:annotation>
+      <xs:documentation>Index Node Type</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Index">
+        <xs:annotation>
+          <xs:documentation>Creates a Index Link to a specific Index from a Compiled Help File. The format of URL is HelpName:Index\Path.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Link">
+        <xs:annotation>
+          <xs:documentation>Creates a generic link to content in the help file. This is the default Index type.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:attributeGroup name="FileAttributes">
+    <xs:attribute name="File" type="xs:string" use="required">
+      <xs:annotation>
+        <xs:documentation>The relitive path to the file.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+  <xs:group name="tocLine">
+    <xs:annotation>
+      <xs:documentation>Table Of Contents TOC Line Group</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="HelpTOCNode" minOccurs="0" maxOccurs="unbounded" type="HelpTOCNodeType">
+        <xs:annotation>
+          <xs:documentation>Table of Contents node.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:group>
+  <xs:element name="HelpTOC" type="HelpTOCType">
+    <xs:annotation>
+      <xs:documentation>The Help Table of Contents root node.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="HelpKI" type="HelpKIType">
+    <xs:annotation>
+      <xs:documentation>The help index root node.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:element name="HelpCollection" type="HelpCollectionType">
+    <xs:annotation>
+      <xs:documentation>The Help Collection Root Node.</xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:complexType name="HelpCollectionType" id="HelpCollectionType">
+    <xs:sequence>
+      <xs:element name="CompileDirective" minOccurs="0" type="CompileDirectiveType">
+        <xs:annotation>
+          <xs:documentation>This element is for adding directives for the NasuTek Help Compiler (nhcompile.exe). This is not used by the help engine whatsoever and is actually removed on compile.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="TOCDef" minOccurs="0" maxOccurs="unbounded" type="TOCDefType">
+        <xs:annotation>
+          <xs:documentation>Include a Table of Contents definition file.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="IndexDef" minOccurs="0" maxOccurs="unbounded" type="IndexDefType">
+        <xs:annotation>
+          <xs:documentation>Include an index definition file.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="Id" type="xs:string" use="required">
+      <xs:annotation>
+        <xs:documentation>The namespace of the help collection.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="Title" type="xs:string" use="required">
+      <xs:annotation>
+        <xs:documentation>The title of the help collection.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="FileVersion" type="xs:string" use="required">
+      <xs:annotation>
+        <xs:documentation>The version of the help collection.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="ShortDescription" type="xs:string">
+      <xs:annotation>
+        <xs:documentation>A short description of the help collection.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="Copyright">
+      <xs:annotation>
+        <xs:documentation>The copyright of the help file.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="LangID" type="xs:int" default="1033">
+      <xs:annotation>
+        <xs:documentation>The Language ID of the help file in decimal notation. For the decimal notation of the Language ID, see http://msdn.microsoft.com/en-us/library/0h88fahh(v=vs.85).aspx. By default this is 1033 - English: United States.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="CollectionInfo" type="xs:string" use="optional">
+      <xs:annotation>
+        <xs:documentation>The relitive path to the collection information file.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+
+  <xs:complexType id="HelpKIType" name="HelpKIType">
+    <xs:sequence>
+      <xs:element name="HelpKINode" minOccurs="0" maxOccurs="unbounded" type="HelpKINodeType">
+        <xs:annotation>
+          <xs:documentation>Index Node</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="FilterDef" type="xs:string">
+      <xs:annotation>
+        <xs:documentation>The filters for this Index file. Seperate each Key=Value pair with a semicolon. Equal signs and Semicolons are not allowed in neither the key or the value as they are used as delimiters.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType id="HelpTOCType" name="HelpTOCType">
+    <xs:group ref="tocLine" minOccurs="0" maxOccurs="unbounded"/>
+    <xs:attribute name="FilterDef" type="xs:string" use="optional">
+      <xs:annotation>
+        <xs:documentation>The filters for this Table of Contents file. Seperate each Key=Value pair with a semicolon. Equal signs and Semicolons are not allowed in neither the key or the value as they are used as delimeaters.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType id="TOCDefType" name="TOCDefType">
+    <xs:attributeGroup ref="FileAttributes"/>
+  </xs:complexType>
+  <xs:complexType id="IndexDefType" name="IndexDefType">
+    <xs:attributeGroup ref="FileAttributes"/>
+  </xs:complexType>
+  <xs:complexType id="CompileIncludeType" name="CompileIncludeType">
+    <xs:attribute name="Path" type="xs:string" use="required"/>
+  </xs:complexType>
+  <xs:complexType id="CompileAttributeType" name="CompileAttributeType">
+    <xs:attribute name="Value"/>
+    <xs:attribute name="Name"/>
+  </xs:complexType>
+  <xs:complexType id="CompileDirectiveType" name="CompileDirectiveType">
+    <xs:sequence>
+      <xs:element name="Include" minOccurs="0" maxOccurs="unbounded" type="CompileIncludeType"> </xs:element>
+      <xs:element name="Attribute" minOccurs="0" maxOccurs="unbounded" type="CompileAttributeType">
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="FilePath" type="xs:string" use="required">
+      <xs:annotation>
+        <xs:documentation>The final name of the Compiled File</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType id="HelpKINodeType" name="HelpKINodeType">
+    <xs:sequence>
+      <xs:element name="HelpKINode" minOccurs="0" maxOccurs="unbounded" type="HelpKINodeType">
+        <xs:annotation>
+          <xs:documentation>Index Node</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="Title" type="xs:string" use="required">
+      <xs:annotation>
+        <xs:documentation>The title of the Index Node.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="Type" type="IndexType" default="Link">
+      <xs:annotation>
+        <xs:documentation>The Type of Node this HelpKINode is. By default it is Link.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="Url" type="xs:string" use="optional">
+      <xs:annotation>
+        <xs:documentation>The URL for the Index Node. If you have sub Index Nodes in this Node, then this attribute is ignored.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:complexType id="HelpTOCNodeType" name="HelpTOCNodeType">
+    <xs:group ref="tocLine"/>
+    <xs:attribute name="Id" type="xs:string" use="optional">
+      <xs:annotation>
+        <xs:documentation>The Id of the topic. Unused but kept for compatability with Sandcastle Help File Builder Generated TOCs.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="Title" type="xs:string" use="required">
+      <xs:annotation>
+        <xs:documentation>The title of the TOC Node.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="Type" type="TOCNodeType" use="optional" default="Link">
+      <xs:annotation>
+        <xs:documentation>The Type of Node this HelpTOCNode is. By default it is Link.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="Url" type="xs:string" use="required">
+      <xs:annotation>
+        <xs:documentation>The URL of the Node. This is relitive of the root of the compiled collection or the loose collection.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+</xs:schema>

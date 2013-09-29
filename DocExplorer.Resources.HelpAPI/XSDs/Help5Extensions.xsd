@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified"
+    targetNamespace="http://schemas.nasutek.com/2013/Help5/Help5Extensions"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="NasuTekNamespaceDefinition">
+    <xs:annotation>
+      <xs:documentation>Root of the NasuTek Namespace Definition XML File.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Plugins">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Plugin" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:attribute name="id" type="xs:string" use="required"/>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="LinkedBooks">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="LinkedBook" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:attribute name="id" type="xs:string" use="required"/>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Filters"/>
+      </xs:sequence>
+      <xs:attribute name="id" type="xs:string" use="required">
+        <xs:annotation>
+          <xs:documentation>The ID of the namespace (ex. NasuTek.Help.Namespace).</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="friendlyName" type="xs:string" use="required">
+        <xs:annotation>
+          <xs:documentation>The Friendly Name of the namespace (ex. NasuTek Help 5 Namespace).</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="isCombinedCollection" type="xs:boolean" use="required">
+        <xs:annotation>
+          <xs:documentation>Is this a Combined Collection where it links to other namespaces or a standalone namespace?</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InstalledBooks">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Book" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:attribute name="id" type="xs:string" use="required"/>
+            <xs:attribute name="fileName" type="xs:string" use="required"/>
+            <xs:attribute name="onlineBook" type="xs:boolean" use="optional" />
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
