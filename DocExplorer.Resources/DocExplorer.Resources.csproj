@@ -1,6 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <Import Project="$(SolutionDir)NDE_BuildConfig.proj" />
+  <Import Project="$(SolutionDir)NDE_BuildConfig.user.proj" Condition="Exists('$(SolutionDir)NDE_BuildConfig.user.proj')" />
+
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -33,18 +36,18 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="ICSharpCode.SharpZipLib">
-      <HintPath>..\..\Libraries\ICSharpCode.SharpZipLib.dll</HintPath>
+      <HintPath>$(LibraryPath)\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
     <Reference Include="ntedevenv, Version=8.0.0.0, Culture=neutral, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\NTEDevEnvLibs\ntedevenv.dll</HintPath>
+      <HintPath>$(DevEnvRoot)\ntedevenv.dll</HintPath>
     </Reference>
     <Reference Include="ntedevenvcore, Version=8.0.0.0, Culture=neutral, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\NTEDevEnvLibs\ntedevenvcore.dll</HintPath>
+      <HintPath>$(DevEnvRoot)\ntedevenvcore.dll</HintPath>
     </Reference>
     <Reference Include="ProtocolPlugin">
-      <HintPath>..\..\Libraries\ProtocolPlugin.dll</HintPath>
+      <HintPath>$(LibraryPath)\ProtocolPlugin.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
