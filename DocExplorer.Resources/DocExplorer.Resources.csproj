@@ -3,7 +3,6 @@
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <Import Project="$(SolutionDir)NDE_BuildConfig.proj" />
   <Import Project="$(SolutionDir)NDE_BuildConfig.user.proj" Condition="Exists('$(SolutionDir)NDE_BuildConfig.user.proj')" />
-
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -46,8 +45,8 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>$(DevEnvRoot)\ntedevenvcore.dll</HintPath>
     </Reference>
-    <Reference Include="ProtocolPlugin">
-      <HintPath>$(LibraryPath)\ProtocolPlugin.dll</HintPath>
+    <Reference Include="deprotocol">
+      <HintPath>$(LibraryPath)\deprotocol.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

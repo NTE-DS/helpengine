@@ -15,7 +15,6 @@
  * limitations under the License.
  ***************************************************************************************************/
 
-using ProtocolPlugin;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -23,13 +22,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using NasuTek.DevEnvironment;
 using Help = DocExplorer.Resources.HelpAPI.Help;
 
 namespace DocExplorer.Resources.HelpAPI
 {
-    public class HelpScheme : IProtoPlug
+    public class HelpScheme : IProtocol
     {
-        public int getStream(string url, out Stream objStream) {
+        public int GetStream(string url, out Stream objStream) {
             objStream = new MemoryStream();
             var uri = new Uri(url);
 

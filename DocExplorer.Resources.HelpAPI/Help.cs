@@ -16,15 +16,15 @@
  ***************************************************************************************************/
 
 using Microsoft.Win32;
-using ProtocolPlugin;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Xml.Linq;
+using NasuTek.DevEnvironment;
+
 namespace DocExplorer.Resources.HelpAPI {
     public class Help {
-        private static ProtoPlug protoPlugInstance;
         public static Help Instance { get; private set; }
         public event System.EventHandler BrowserNavigated;
         public IHelpUi HelpUi { get; set; }
@@ -57,15 +57,14 @@ namespace DocExplorer.Resources.HelpAPI {
         }
 
         public static void RegisterNteHelpProtocol() {
-            if (protoPlugInstance == null)
-                protoPlugInstance = new ProtoPlug("nte-help", new HelpScheme());
+            Protocol.RegisterProtocol("nte-help", new HelpScheme());
         }
 
         public static void UnregisterNteHelpProtocol() {
-            if (protoPlugInstance != null) {
+            /*if (protoPlugInstance != null) {
                 protoPlugInstance.Dispose();
                 protoPlugInstance = null;
-            }
+            }*/
         }
 
         public HelpNamespace GetNamespace(string name) {

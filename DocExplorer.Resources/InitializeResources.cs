@@ -17,7 +17,6 @@
 
 using NasuTek.DevEnvironment.Resources;
 using NasuTek.DevEnvironment.Resources.Addins;
-using ProtocolPlugin;
 using System;
 using System.Collections.Generic;
 using System.Linq;
