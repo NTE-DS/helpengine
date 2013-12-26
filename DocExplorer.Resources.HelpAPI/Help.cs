@@ -15,7 +15,6 @@
  * limitations under the License.
  ***************************************************************************************************/
 
-using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -61,10 +60,7 @@ namespace DocExplorer.Resources.HelpAPI {
         }
 
         public static void UnregisterNteHelpProtocol() {
-            /*if (protoPlugInstance != null) {
-                protoPlugInstance.Dispose();
-                protoPlugInstance = null;
-            }*/
+            Protocol.UnregisterProtocol("nte-help");
         }
 
         public HelpNamespace GetNamespace(string name) {
@@ -131,7 +127,11 @@ namespace DocExplorer.Resources.HelpAPI {
         }
 
         public static string GetRegisteredCollection(string collectionName) {
+#if DEBUG
+            var regPath = Microsoft.Win32.Registry.LocalMachine.OpenSubKey("SOFTWARE\\NasuTek Enterprises\\Help\\5.0-Debug\\RegisteredCollections");
+#else
             var regPath = Microsoft.Win32.Registry.LocalMachine.OpenSubKey("SOFTWARE\\NasuTek Enterprises\\Help\\5.0\\RegisteredCollections");
+#endif
 
             return (string)regPath.GetValue(collectionName);
         }
@@ -140,26 +140,21 @@ namespace DocExplorer.Resources.HelpAPI {
             ITOCNode iTOCNode = (ITOCNode)this.HelpUi.TocTypeGenerator.GetConstructor(System.Type.EmptyTypes).Invoke(null);
             iTOCNode.InitializeTOCNode(null, null, null, null, null);
             HelpFile[] titles = Namespaces[namespaceName].Titles;
-            for (int i = 0; i < titles.Length; i++) {
-                HelpFile helpFile = titles[i];
+            foreach (HelpFile helpFile in titles) {
                 XDocument[] tocs = helpFile.Tocs;
-                for (int j = 0; j < tocs.Length; j++) {
-                    XDocument xDocument = tocs[j];
+                foreach (XDocument xDocument in tocs) {
                     this.Fill(iTOCNode, xDocument, xDocument.Element("{http://schemas.nasutek.com/2013/Help5/Help42Extensions}HelpTOC"), namespaceName, helpFile.HelpFileId, filter);
                 }
             }
             //TODO: Change this to deal with the new way of reading namespaces 
             string[] namespacePlugins = Namespaces[namespaceName].NamespacePlugins;
-            for (int k = 0; k < namespacePlugins.Length; k++) {
-                HelpNamespace helpNamespace = Namespaces[namespacePlugins[k]];
+            foreach (HelpNamespace helpNamespace in namespacePlugins.Select(t => Namespaces[t])) {
                 if (!helpNamespace.NamespaceTopicsLoaded)
                     helpNamespace.LoadTopics();
                 HelpFile[] titles2 = helpNamespace.Titles;
-                for (int l = 0; l < titles2.Length; l++) {
-                    HelpFile helpFile2 = titles2[l];
+                foreach (HelpFile helpFile2 in titles2) {
                     XDocument[] tocs2 = helpFile2.Tocs;
-                    for (int m = 0; m < tocs2.Length; m++) {
-                        XDocument xDocument2 = tocs2[m];
+                    foreach (XDocument xDocument2 in tocs2) {
                         this.Fill(iTOCNode, xDocument2, xDocument2.Element("{http://schemas.nasutek.com/2013/Help5/Help42Extensions}HelpTOC"), helpNamespace.NamespaceID, helpFile2.HelpFileId, filter);
                     }
                 }
@@ -362,7 +357,7 @@ namespace DocExplorer.Resources.HelpAPI {
         }
         #endregion
 
-        internal string GetProperNamespaceName(string p) {
+        public string GetProperNamespaceName(string p) {
             return Namespaces.First(v => String.Equals(v.Key, p, StringComparison.CurrentCultureIgnoreCase)).Key;
         }
     }

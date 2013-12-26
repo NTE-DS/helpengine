@@ -15,11 +15,19 @@ namespace DocExplorer.Resources.HelpAPI {
 
         public static void CreateRegCollectionKey(string collectionName, string collectionPath) {
             if (!String.IsNullOrEmpty(collectionName)) {
+#if DEBUG
+                var kpl = Registry.LocalMachine.OpenSubKey("SOFTWARE\\NasuTek Enterprises\\Help\\5.0-Debug\\RegisteredCollections", true);
+#else
                 var kpl = Registry.LocalMachine.OpenSubKey("SOFTWARE\\NasuTek Enterprises\\Help\\5.0\\RegisteredCollections", true);
+#endif
                 kpl.SetValue(collectionName, collectionPath);
                 return;
             }
+#if DEBUG
+            Registry.LocalMachine.CreateSubKey("SOFTWARE\\NasuTek Enterprises\\Help\\5.0-Debug\\RegisteredCollections");
+#else
             Registry.LocalMachine.CreateSubKey("SOFTWARE\\NasuTek Enterprises\\Help\\5.0\\RegisteredCollections");
+#endif
         }
 
         public void CreateCollection() {
@@ -138,6 +146,20 @@ namespace DocExplorer.Resources.HelpAPI {
             plugin.Add(new XAttribute("id", namespaceIDToPlugin));
 
             doc.Element("{http://schemas.nasutek.com/2013/Help5/Help5Extensions}NasuTekNamespaceDefinition").Element("{http://schemas.nasutek.com/2013/Help5/Help5Extensions}Plugins").Add(plugin);
+            doc.Save(Path.Combine(collectionPath, "Namespaces", namespaceID + ".NxN"));
+        }
+
+        public void RemovePlugin(string namespaceIDToPlugin, string namespaceID) {
+            var doc = XDocument.Load(Path.Combine(collectionPath, "Namespaces", namespaceID + ".NxN"));
+
+            var plugin =
+                doc.Element("{http://schemas.nasutek.com/2013/Help5/Help5Extensions}NasuTekNamespaceDefinition")
+                    .Element("{http://schemas.nasutek.com/2013/Help5/Help5Extensions}Plugins")
+                    .Elements("{http://schemas.nasutek.com/2013/Help5/Help5Extensions}Plugin")
+                    .FirstOrDefault(v => v.Attribute("id").Value == namespaceIDToPlugin);
+
+            if (plugin == null) return;
+            plugin.Remove();
             doc.Save(Path.Combine(collectionPath, "Namespaces", namespaceID + ".NxN"));
         }
     }

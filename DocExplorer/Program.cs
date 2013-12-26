@@ -18,6 +18,7 @@
 using NasuTek.DevEnvironment.Resources;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -26,6 +27,18 @@ namespace DocExplorer
 {
     static class Program
     {
+        static Program() {
+            AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
+            Application.ThreadException += Application_ThreadException;
+        }
+
+        static void Application_ThreadException(object sender, System.Threading.ThreadExceptionEventArgs e) {
+            var file = Path.GetTempFileName();
+            File.WriteAllText(file, e.Exception.ToString());
+            MessageBox.Show(e.Exception.Message + Environment.NewLine + "EL: " + file, "NasuTek Document Explorer", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            Application.Exit();
+        }
+
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -42,6 +55,10 @@ namespace DocExplorer
             Application.SetCompatibleTextRenderingDefault(false);
             var devEnv = new DevEnv {ProductName = "NasuTek Document Explorer", ProductVersion = new Version(5, 0, 2000, 0), ProductCopyrightYear = "2008", WindowIcon = Properties.Resources.ProductIcon};
             devEnv.InitializeEnvironment(arguments);
+        }
+
+        static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e) {
+            MessageBox.Show(e.ExceptionObject.ToString(), "NasuTek Document Explorer", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 }
