@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
-using NasuTek.DevEnvironment.Resources;
+using NasuTek.DevEnvironment;
 
 namespace DocExplorer.SimpleUI {
     static class SimpleUIProgram {

@@ -15,8 +15,7 @@
  * limitations under the License.
  ***************************************************************************************************/
 
-using NasuTek.DevEnvironment.Resources;
-using NasuTek.DevEnvironment.Resources.Addins;
+using NasuTek.DevEnvironment.Extensibility.Addins;
 using System;
 using System.Collections.Generic;
 using System.Linq;

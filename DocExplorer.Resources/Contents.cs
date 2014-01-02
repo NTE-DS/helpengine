@@ -21,7 +21,8 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
-using NasuTek.DevEnvironment.Resources;
+using NasuTek.DevEnvironment.Documents;
+using NasuTek.DevEnvironment.Extensibility.Workbench;
 namespace DocExplorer.Resources
 {
 	public class Contents : DevEnvPane

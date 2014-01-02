@@ -33,13 +33,14 @@
  ***************************************************************************************************/
 
 using DocExplorer.Resources.HelpAPI;
-using NasuTek.DevEnvironment.Resources;
-using NasuTek.DevEnvironment.Resources.Addins;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using NasuTek.DevEnvironment;
+using NasuTek.DevEnvironment.Documents;
+using NasuTek.DevEnvironment.Extensibility.Addins;
 
 namespace DocExplorer.Resources
 {

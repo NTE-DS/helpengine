@@ -16,11 +16,12 @@
  ***************************************************************************************************/
 
 using DocExplorer.Resources.HelpAPI;
-using NasuTek.DevEnvironment.Resources;
 using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
+using NasuTek.DevEnvironment;
+using NasuTek.DevEnvironment.Documents;
 
 namespace DocExplorer.Resources
 {

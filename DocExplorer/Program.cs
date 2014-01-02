@@ -15,7 +15,7 @@
  * limitations under the License.
  ***************************************************************************************************/
 
-using NasuTek.DevEnvironment.Resources;
+using NasuTek.DevEnvironment;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -53,7 +53,7 @@ namespace DocExplorer
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            var devEnv = new DevEnv {ProductName = "NasuTek Document Explorer", ProductVersion = new Version(5, 0, 2000, 0), ProductCopyrightYear = "2008", WindowIcon = Properties.Resources.ProductIcon};
+            var devEnv = new DevEnv { ProductName = "NasuTek Document Explorer", ProductVersionCodebase = new Version(5, 2, 0, 0), ProductVersionRelease = new Version(2, 0, 0, 0), ProductCopyrightYear = "2008", WindowIcon = Properties.Resources.ProductIcon };
             devEnv.InitializeEnvironment(arguments);
         }
 

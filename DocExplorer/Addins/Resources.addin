@@ -20,7 +20,7 @@
     <MenuItem id="File" label="File" type="Menu">
       <MenuItem id="Print" label="Print" icon="printer" class="DocExplorer.Resources.PrintWeb"  />
       <MenuItem id="Seperator1" label="-" type="Separator" />
-      <MenuItem id="Exit" label="Exit" class="NasuTek.DevEnvironment.Resources.ExitDevEnv" />
+      <MenuItem id="Exit" label="Exit" class="NasuTek.DevEnvironment.MenuCommands.ExitDevEnv" />
     </MenuItem>
     <MenuItem id="Edit" label="Edit" type="Menu">
       <MenuItem id="Undo" label="Undo" icon="Edit_UndoHS" />
@@ -52,7 +52,7 @@
       <MenuItem id="Customize" label="Customize" class="NasuTek.DevEnvironment.Resources.CustomizeEnvironmentMenuItem" />
       <MenuItem id="Options" label="Options" class="NasuTek.DevEnvironment.Resources.EnvironmentOptionsMenuItem" />
     </MenuItem>
-    <MenuItem id="Window" label="Window" type="Builder" class="NasuTek.DevEnvironment.Resources.WindowMenuBuilder" />
+    <MenuItem id="Window" label="Window" type="Builder" class="NasuTek.DevEnvironment.WindowMenuBuilder" />
     <MenuItem id="Help" label="Help" type="Menu">
       <MenuItem id="Contents" label="Contents" class="DocExplorer.Resources.ShowContents" icon="Contents" shortcut="Control|Alt|F1" />
       <MenuItem id="Index" label="Index" class="DocExplorer.Resources.ShowIndex" icon="Index" shortcut="Control|Alt|F2" />
@@ -62,7 +62,7 @@
       <MenuItem id="SyncContents" label="Sync contents" icon="Sync" class="DocExplorer.Resources.SelectActiveTopic" />
       <MenuItem id="Seperator2" label="-" type="Separator" />
       <MenuItem id="HelpOnHelp" label="Help on Help" class="DocExplorer.Resources.ShowDocHelp" />
-      <MenuItem id="About" label="About NasuTek Document Explorer" class="NasuTek.DevEnvironment.Resources.AboutDevEnv" />
+      <MenuItem id="About" label="About NasuTek Document Explorer" class="NasuTek.DevEnvironment.MenuCommands.AboutDevEnv" />
     </MenuItem>
   </Path>
 

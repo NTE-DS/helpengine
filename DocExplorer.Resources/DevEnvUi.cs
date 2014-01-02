@@ -16,7 +16,7 @@
  ***************************************************************************************************/
 
 using DocExplorer.Resources.HelpAPI;
-using NasuTek.DevEnvironment.Resources;
+using NasuTek.DevEnvironment;
 using System;
 using System.Collections.Generic;
 using System.Linq;

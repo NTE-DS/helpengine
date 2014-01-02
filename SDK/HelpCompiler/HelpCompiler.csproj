@@ -66,7 +66,8 @@
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>
-  <Target Name="AfterBuild">
-  </Target>
   -->
+  <Target Name="AfterBuild">
+    <Exec Command="xcopy /E /Y $(SolutionDir)SDK\SDK_Root $(BuildPath)\SDKs\Help5" />
+  </Target>
 </Project>
