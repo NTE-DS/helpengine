@@ -25,7 +25,7 @@ namespace DocExplorer.Resources.HelpAPI
 		public string FilterName
 		{
 			get;
-			set;
+			private set;
 		}
 		public System.Collections.Generic.List<FilterParam> Params
 		{

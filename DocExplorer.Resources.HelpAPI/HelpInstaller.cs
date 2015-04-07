@@ -13,6 +13,10 @@ namespace DocExplorer.Resources.HelpAPI {
             this.collectionPath = collectionPath;
         }
 
+        public static void CreateRegCollectionKey() {
+            CreateRegCollectionKey(null, null);
+        }
+
         public static void CreateRegCollectionKey(string collectionName, string collectionPath) {
             if (!String.IsNullOrEmpty(collectionName)) {
 #if DEBUG
@@ -44,14 +48,14 @@ namespace DocExplorer.Resources.HelpAPI {
             doc.Save(Path.Combine(fullPath, "ContentStore", "InstalledBooks.xml"));
         }
 
-        public void CreateNamespace(string namespaceID, string friendlyName, string combinedCollection) {
+        public void CreateNamespace(string namespaceID, string friendlyName, bool combinedCollection) {
             var doc = new XDocument();
             var rootElement =
                 new XElement("{http://schemas.nasutek.com/2013/Help5/Help5Extensions}NasuTekNamespaceDefinition");
 
             rootElement.Add(new XAttribute("id", namespaceID));
             rootElement.Add(new XAttribute("friendlyName", friendlyName));
-            rootElement.Add(new XAttribute("isCombinedCollection", combinedCollection == "True" ? "True" : "False"));
+            rootElement.Add(new XAttribute("isCombinedCollection", combinedCollection ? "True" : "False"));
 
             rootElement.Add(new XElement("{http://schemas.nasutek.com/2013/Help5/Help5Extensions}Plugins"));
             rootElement.Add(new XElement("{http://schemas.nasutek.com/2013/Help5/Help5Extensions}LinkedBooks"));

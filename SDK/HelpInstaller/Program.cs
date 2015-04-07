@@ -30,54 +30,43 @@ using HelpInstallerAPI = DocExplorer.Resources.HelpAPI.HelpInstaller;
 namespace HelpInstaller {
     class Program {
         static void Main(string[] args) {
-            if (args.Length == 0) {
+            if(args.Length == 0) {
                 MessageBox.Show("This application must be launched by the Collection Manager. It is not ment to be ran as a standalone.", "NasuTek Help 5 Collection Manager", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             var arg = new Arguments(args);
 
-            if (arg["CreateRegCollectionKey"] == "true")
-            {
+            if(arg["CreateRegCollectionKey"] == "true") {
                 HelpInstallerAPI.CreateRegCollectionKey(arg["CollectionName"], arg["CollectionPath"]);
-            }
-            else if (arg["CreateNamespaceCollection"] == "true")
-            {
+            } else if(arg["GenerateDefaultCollection"] == "true") {
+                HelpInstallerAPI.CreateRegCollectionKey();
+                HelpInstallerAPI.CreateRegCollectionKey("DefaultCollection", Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData), "NasuTek Help 5"));
+                var helpInstaller = new HelpInstallerAPI(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData), "NasuTek Help 5"));
+                helpInstaller.CreateCollection();
+                helpInstaller.CreateNamespace("NasuTek.Default.CC", "NasuTek Default Combined Collection", true);
+            } else if(arg["CreateNamespaceCollection"] == "true") {
                 var helpInstaller = new HelpInstallerAPI(arg["CollectionPath"]);
                 helpInstaller.CreateCollection();
-            }
-            else if (arg["CreateNamespace"] == "true")
-            {
+            } else if(arg["CreateNamespace"] == "true") {
                 var helpInstaller = new HelpInstallerAPI(arg["CollectionPath"]);
-                helpInstaller.CreateNamespace(arg["NamespaceID"], arg["FriendlyName"], arg["CombinedCollection"]);
-            }
-            else if (arg["DeleteNamespace"] == "true")
-            {
+                helpInstaller.CreateNamespace(arg["NamespaceID"], arg["FriendlyName"], Convert.ToBoolean(arg["CombinedCollection"]));
+            } else if(arg["DeleteNamespace"] == "true") {
                 var helpInstaller = new HelpInstallerAPI(arg["CollectionPath"]);
                 helpInstaller.DeleteNamespace(arg["NamespaceID"]);
-            }
-            else if (arg["InstallHelp"] == "true")
-            {
+            } else if(arg["InstallHelp"] == "true") {
                 var helpInstaller = new HelpInstallerAPI(arg["CollectionPath"]);
                 helpInstaller.InstallBook(arg["BookID"], arg["BookFilePath"]);
-            }
-            else if (arg["UninstallHelp"] == "true")
-            {
+            } else if(arg["UninstallHelp"] == "true") {
                 var helpInstaller = new HelpInstallerAPI(arg["CollectionPath"]);
                 helpInstaller.UninstallBook(arg["BookID"]);
-            }
-            else if (arg["LinkBook"] == "true")
-            {
+            } else if(arg["LinkBook"] == "true") {
                 var helpInstaller = new HelpInstallerAPI(arg["CollectionPath"]);
                 helpInstaller.LinkBook(arg["BookID"], arg["NamespaceID"]);
-            }
-            else if (arg["UnlinkBook"] == "true")
-            {
+            } else if(arg["UnlinkBook"] == "true") {
                 var helpInstaller = new HelpInstallerAPI(arg["CollectionPath"]);
                 helpInstaller.UnlinkBook(arg["BookID"], arg["NamespaceID"]);
-            }
-            else if (arg["AddPlugin"] == "true")
-            {
+            } else if(arg["AddPlugin"] == "true") {
                 var helpInstaller = new HelpInstallerAPI(arg["CollectionPath"]);
                 helpInstaller.AddPlugin(arg["NamespaceIDToPlugin"], arg["NamespaceID"]);
             }
