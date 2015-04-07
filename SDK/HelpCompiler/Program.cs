@@ -29,11 +29,11 @@ namespace HelpCompiler {
     class Program {
         static void Main(string[] args) {
             Console.WriteLine("NasuTek Help 5 Compiler");
-            Console.WriteLine("Copyright (C) 2008-2013 NasuTek Enterprises");
+            Console.WriteLine("Copyright (C) 2008-2015 NasuTek Enterprises");
             Console.WriteLine();
             Arguments arguments = new Arguments(args);
             if (arguments["?"] == "true" || args.Length == 0) {
-                Console.WriteLine("-CompileNXC=<NXH File Path>");
+                Console.WriteLine("/CompileNXC:<NXH File Path>");
                 Console.WriteLine("\tCompiles an NXH File to an NXC file.");
                 return;
             }
