@@ -26,6 +26,12 @@ using NasuTek.DevEnvironment.Documents;
 using NasuTek.DevEnvironment.Extensibility.Addins;
 
 namespace DocExplorer.Resources {
+    public class AboutDocExplorer : AbstractMenuCommand {
+        public override void Run() {
+            new AboutDocExplore().ShowDialog();
+        }
+    }
+
     public class SelectNextTopic : AbstractMenuCommand
     {
         public override void Run()

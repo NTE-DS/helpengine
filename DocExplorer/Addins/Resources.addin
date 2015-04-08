@@ -62,7 +62,7 @@
       <MenuItem id="SyncContents" label="Sync contents" icon="Sync" class="DocExplorer.Resources.SelectActiveTopic" />
       <MenuItem id="Seperator2" label="-" type="Separator" />
       <MenuItem id="HelpOnHelp" label="Help on Help" class="DocExplorer.Resources.ShowDocHelp" />
-      <MenuItem id="About" label="About NasuTek Document Explorer" class="NasuTek.DevEnvironment.MenuCommands.AboutDevEnv" />
+      <MenuItem id="About" label="About NasuTek Document Explorer" class="DocExplorer.Resources.AboutDocExplorer" />
     </MenuItem>
   </Path>
 
