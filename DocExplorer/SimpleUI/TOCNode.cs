@@ -62,15 +62,15 @@ namespace HelpSimple {
         public void AddSubNode(ITOCNode subNode) {
             base.Nodes.Add((TOCNode)subNode);
         }
-        public bool ContainSubNode(string subNodeTitle) {
-            return base.Nodes.ContainsKey(subNodeTitle);
+        public bool ContainSubNode(string subNodeId) {
+            return base.Nodes.ContainsKey(subNodeId);
         }
-        public ITOCNode GetSubTOCNode(string subNodeTitle) {
-            return (ITOCNode)base.Nodes[subNodeTitle];
+        public ITOCNode GetSubTOCNode(string subNodeId) {
+            return (ITOCNode)base.Nodes[subNodeId];
         }
         public void InitializeTOCNode(string title, string url, string id, string namespaceName, string helpFileNamespaceName) {
             this.Title = title;
-            base.Name = title;
+            base.Name = id;
             base.Text = title;
             this.Url = url;
             this.Id = id;

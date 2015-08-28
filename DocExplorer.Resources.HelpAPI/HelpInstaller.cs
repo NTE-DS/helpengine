@@ -13,10 +13,6 @@ namespace DocExplorer.Resources.HelpAPI {
             this.collectionPath = collectionPath;
         }
 
-        public static void CreateRegCollectionKey() {
-            CreateRegCollectionKey(null, null);
-        }
-
         public static void CreateRegCollectionKey(string collectionName, string collectionPath) {
             if (!String.IsNullOrEmpty(collectionName)) {
 #if DEBUG
@@ -32,6 +28,39 @@ namespace DocExplorer.Resources.HelpAPI {
 #else
             Registry.LocalMachine.CreateSubKey("SOFTWARE\\NasuTek Enterprises\\Help\\5.0\\RegisteredCollections");
 #endif
+        }
+
+        public static void Install(string installDir)
+        {
+            CreateRegCollectionKey(null, null);
+            CreateRegCollectionKey("DefaultCollection", Path.Combine(installDir, "DefaultCollection"));
+            var helpInstaller = new HelpInstaller(Path.Combine(installDir, "DefaultCollection"));
+            helpInstaller.CreateCollection();
+            helpInstaller.CreateNamespace("NasuTek.Default.CC", "NasuTek Default Combined Collection", true);
+
+#if DEBUG
+            var kpl = Registry.LocalMachine.OpenSubKey("SOFTWARE\\NasuTek Enterprises\\Help\\5.0-Debug", true);
+#else
+            var kpl = Registry.LocalMachine.OpenSubKey("SOFTWARE\\NasuTek Enterprises\\Help\\5.0", true);
+#endif
+
+            kpl.SetValue("InstallDir", installDir);
+        }
+
+        public static void Uninstall()
+        {
+#if DEBUG
+            var kpl = Registry.LocalMachine.OpenSubKey("SOFTWARE\\NasuTek Enterprises\\Help\\5.0-Debug", true);
+#else
+            var kpl = Registry.LocalMachine.OpenSubKey("SOFTWARE\\NasuTek Enterprises\\Help\\5.0", true);
+#endif
+            var installDir = (string)kpl.GetValue("InstallDir");
+#if DEBUG
+            Registry.LocalMachine.DeleteSubKeyTree("SOFTWARE\\NasuTek Enterprises\\Help\\5.0-Debug");
+#else
+            Registry.LocalMachine.DeleteSubKeyTree("SOFTWARE\\NasuTek Enterprises\\Help\\5.0");
+#endif
+            Directory.Delete(Path.Combine(installDir, "DefaultCollection"), true);
         }
 
         public void CreateCollection() {

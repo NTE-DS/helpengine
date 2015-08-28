@@ -12,7 +12,7 @@ using System.Windows.Forms;
 namespace HelpServer
 {
     public partial class Server : Component {
-        WebServer ws = new WebServer(SendResponse, "http://localhost:8080/");
+        WebServer ws = new WebServer(SendResponse, "http://localhost:8081/");
         private static HelpHttp hp = new HelpHttp();
 
         public Server()
@@ -30,7 +30,7 @@ namespace HelpServer
         }
 
         private void notifyIcon1_MouseDoubleClick(object sender, System.Windows.Forms.MouseEventArgs e) {
-            Process.Start("http://localhost:8080");
+            Process.Start("http://localhost:8081");
         }
 
         private void toolStripMenuItem1_Click(object sender, EventArgs e) {

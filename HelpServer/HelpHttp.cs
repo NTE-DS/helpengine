@@ -24,12 +24,12 @@ namespace HelpServer {
             m_SubNodes.Add((NullToc) subNode);
         }
 
-        public bool ContainSubNode(string subNodeTitle) {
-            return m_SubNodes.Any(v => v.Title == subNodeTitle);
+        public bool ContainSubNode(string subNodeId) {
+            return m_SubNodes.Any(v => v.Id == subNodeId);
         }
 
-        public ITOCNode GetSubTOCNode(string subNodeTitle) {
-            return m_SubNodes.FirstOrDefault(v => v.Title == subNodeTitle);
+        public ITOCNode GetSubTOCNode(string subNodeId) {
+            return m_SubNodes.FirstOrDefault(v => v.Id == subNodeId);
         }
 
         public void InitializeTOCNode(string title, string url, string id, string namespaceName, string helpFileNamespaceName) {
@@ -89,7 +89,7 @@ namespace HelpServer {
 
             switch (command) {
                 case "help-data":
-                    return Tuple.Create(GenSelf("nte-help:/" + uri), "");
+                    return Tuple.Create(GenSelf("nte-help:/" + uri), "text/html");
                 case "interface-resources": {
                     try {
                         Assembly _assembly = Assembly.GetExecutingAssembly();

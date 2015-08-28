@@ -200,6 +200,11 @@
         <xs:documentation>The URL for the Index Node. If you have sub Index Nodes in this Node, then this attribute is ignored.</xs:documentation>
       </xs:annotation>
     </xs:attribute>
+    <xs:attribute name="Icon" type="xs:integer" use="optional">
+      <xs:annotation>
+        <xs:documentation>Icon of the TOC Node. By Default it is a book if subitems exists, a document file if otherwise.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
   </xs:complexType>
   <xs:complexType id="HelpTOCNodeType" name="HelpTOCNodeType">
     <xs:group ref="tocLine"/>

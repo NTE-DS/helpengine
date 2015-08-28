@@ -216,15 +216,15 @@ namespace DocExplorer.Resources.HelpAPI {
 				})[0];
                 string filePath = text.Replace(text3 + ":", "");
                 ITOCNode iTOCNode;
-                if (!root.ContainSubNode(text2)) {
+                if (!root.ContainSubNode(id)) {
                     iTOCNode = (ITOCNode)this.HelpUi.TocTypeGenerator.GetConstructor(System.Type.EmptyTypes).Invoke(null);
                     iTOCNode.InitializeTOCNode(text2, null, id, namespaceName, helpFileNamespaceName);
                 } else {
-                    iTOCNode = root.GetSubTOCNode(text2);
+                    iTOCNode = root.GetSubTOCNode(id);
                 }
                 XDocument xDocument = XDocument.Load(new System.IO.MemoryStream(this.GetHelpFile(namespaceName, text3).ReadFile(filePath)));
                 this.Fill(iTOCNode, xDocument, xDocument.Element("{http://schemas.nasutek.com/2013/Help5/Help42Extensions}HelpTOC"), namespaceName, helpFileNamespaceName, filterQuery);
-                if (!root.ContainSubNode(text2) && iTOCNode.SubCount != 0) {
+                if (!root.ContainSubNode(id) && iTOCNode.SubCount != 0) {
                     root.AddSubNode(iTOCNode);
                 }
             }
@@ -244,11 +244,11 @@ namespace DocExplorer.Resources.HelpAPI {
                     int num = (current.Attribute("TocImageId") != null) ? System.Convert.ToInt32(current.Attribute("TocImageId").Value) : 0;
                     this.LinkFill(root, xdoc, current, namespaceName, helpFileNamespaceName, filterQuery);
                     ITOCNode iTOCNode;
-                    if (!root.ContainSubNode(text)) {
+                    if (!root.ContainSubNode(id)) {
                         iTOCNode = (ITOCNode) this.HelpUi.TocTypeGenerator.GetConstructor(System.Type.EmptyTypes).Invoke(null);
                         iTOCNode.InitializeTOCNode(text, url, id, namespaceName, helpFileNamespaceName);
                     } else {
-                        iTOCNode = root.GetSubTOCNode(text);
+                        iTOCNode = root.GetSubTOCNode(id);
                     }
                     iTOCNode.ImageId = num;
                 
@@ -259,7 +259,7 @@ namespace DocExplorer.Resources.HelpAPI {
                         iTOCNode.ImageId = 9;
                     }
                 }
-                if (!root.ContainSubNode(text)) {
+                if (!root.ContainSubNode(id)) {
                     root.AddSubNode(iTOCNode);
                 }
             }

@@ -75,6 +75,8 @@
     <Compile Include="Favorites.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="HelpVersion.cs" />
+    <Compile Include="HelpVersion.gen.cs" />
     <Compile Include="Index.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -136,6 +138,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="HelpVersion.gen.cs.autogen" />
     <None Include="Resources\AboutBox.png" />
   </ItemGroup>
   <ItemGroup>

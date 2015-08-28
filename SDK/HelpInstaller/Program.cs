@@ -61,8 +61,12 @@ Collection Registration:
 /CreateNamespaceCollection /CollectionPath:<Path>
         Creates a Namespace Collection
 
-/GenerateDefaultCollection
-        Generates the default NasuTek Document Explorer Collection.
+/Install /InstallPath:<Path to Help>
+        Generates the default NasuTek Document Explorer Collection, and runs
+        functions needed after installation.
+
+/Uninstall
+        Removes the NasuTek Help Registry Entry.
 
 Namespace Management:
 /CreateNamespace /CollectionPath:<Path> /NamespaceID:<ID>
@@ -74,10 +78,19 @@ Namespace Management:
 /DeleteNamespace /CollectionPath:<Path> /NamespaceID:<ID>
         Deletes the Namespace with the following Namespace ID
 
+/ManageGUI /CollectionPath:<Path> /NamespaceID:<ID>
+        Opens the Management UI to show installed books and books to
+        download.
+
 Help File Management:
 /InstallHelp /CollectionPath:<Path> /BookID:<ID> /BookFilePath:<Path>
         Installs the following help file from the path specified in
         BookFilePath with the following ID.
+
+/InstallWebHelp /CollectionPath:<Path> /HelpListUri:<Url>
+    /BooksToInstall:<Comma list of books to install>
+        Downloads and installs the books from the internet. Automatically
+        installs the books to the Help Collection.
 
 /UninstallHelp /CollectionPath:<Path> /BookID:<ID>
         Uninstalls the following help file with the following ID.
@@ -113,13 +126,13 @@ Namespace Plugin Management:
             {
                 HelpInstallerAPI.CreateRegCollectionKey(arg["CollectionName"], arg["CollectionPath"]);
             }
-            else if (arg["GenerateDefaultCollection"] == "true")
+            else if (arg["Uninstall"] == "true")
             {
-                HelpInstallerAPI.CreateRegCollectionKey();
-                HelpInstallerAPI.CreateRegCollectionKey("DefaultCollection", Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData), "NasuTek Help 5"));
-                var helpInstaller = new HelpInstallerAPI(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData), "NasuTek Help 5"));
-                helpInstaller.CreateCollection();
-                helpInstaller.CreateNamespace("NasuTek.Default.CC", "NasuTek Default Combined Collection", true);
+                HelpInstallerAPI.Uninstall();
+            }
+            else if (arg["Install"] == "true")
+            {
+                HelpInstallerAPI.Install(Path.GetFullPath(arg["InstallPath"]));
             }
             else if (arg["CreateNamespaceCollection"] == "true")
             {

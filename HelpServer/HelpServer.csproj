@@ -94,14 +94,13 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="InterfaceResources\CollapseAll.bmp" />
+    <EmbeddedResource Include="InterfaceResources\sync.png" />
+    <EmbeddedResource Include="InterfaceResources\expandall.png" />
+    <EmbeddedResource Include="InterfaceResources\collapseall.png" />
     <EmbeddedResource Include="InterfaceResources\Collapsed.gif" />
-    <EmbeddedResource Include="InterfaceResources\ExpandAll.bmp" />
     <EmbeddedResource Include="InterfaceResources\Expanded.gif" />
     <Content Include="HelpIcon.ico" />
     <EmbeddedResource Include="InterfaceResources\Item.gif" />
-    <EmbeddedResource Include="InterfaceResources\Splitter.gif" />
-    <EmbeddedResource Include="InterfaceResources\SyncTOC.gif" />
     <EmbeddedResource Include="InterfaceResources\TOC.css" />
     <EmbeddedResource Include="InterfaceResources\TOC.js" />
     <EmbeddedResource Include="InterfaceResources\UserInterface.html" />

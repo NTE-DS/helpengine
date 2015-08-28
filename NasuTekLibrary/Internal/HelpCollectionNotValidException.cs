@@ -16,26 +16,12 @@
  ***************************************************************************************************/
 
 using System;
-namespace DocExplorer.Resources.HelpAPI
+namespace NasuTekLibrary.Internal
 {
-	public interface ITOCNode
+	public class HelpCollectionNotValidException : System.Exception
 	{
-		string Title
+		public HelpCollectionNotValidException() : base("This is not a valid help collection.")
 		{
-			get;
 		}
-		int SubCount
-		{
-			get;
-		}
-		int ImageId
-		{
-			get;
-			set;
-		}
-		void AddSubNode(ITOCNode subNode);
-		bool ContainSubNode(string subNodeId);
-		ITOCNode GetSubTOCNode(string subNodeId);
-        void InitializeTOCNode(string title, string url, string id, string namespaceName, string helpFileNamespaceName);
 	}
 }
