@@ -23,58 +23,58 @@ using System.Text;
 using System.Threading.Tasks;
 using NasuTek.DevEnvironment;
 using NasuTek.DevEnvironment.Documents;
-using NasuTek.DevEnvironment.Extensibility.Addins;
+using NasuTek.DevEnvironment.Extendability;
 
 namespace DocExplorer.Resources {
-    public class AboutDocExplorer : AbstractMenuCommand {
+    public class AboutDocExplorer : AbstractCommand {
         public override void Run() {
             new AboutDocExplore().ShowDialog();
         }
     }
 
-    public class SelectNextTopic : AbstractMenuCommand
+    public class SelectNextTopic : AbstractCommand
     {
         public override void Run()
         {
-            var WebBrowserDocument = DevEnv.Instance.WorkspaceEnvironment.DockPanel.ActiveDocument as WebBrowserDocument;
+            var WebBrowserDocument = DevEnvObj.Instance.WorkspaceEnvironment.DockPanel.ActiveDocument as WebBrowserDocument;
             if (WebBrowserDocument != null)
             {
-                var contentsPane = (Contents)DevEnv.Instance.WorkspaceEnvironment.GetPane("Contents");
+                var contentsPane = (Contents)DevEnvObj.Instance.Extendability.GetPane("Contents");
                 contentsPane.SelectNode(WebBrowserDocument.DocumentUri, TopicSelector.Next);
             }
         }
     }
 
-    public class SelectPreviousTopic : AbstractMenuCommand
+    public class SelectPreviousTopic : AbstractCommand
     {
         public override void Run()
         {
-            WebBrowserDocument WebBrowserDocument = DevEnv.Instance.WorkspaceEnvironment.DockPanel.ActiveDocument as WebBrowserDocument;
+            WebBrowserDocument WebBrowserDocument = DevEnvObj.Instance.WorkspaceEnvironment.DockPanel.ActiveDocument as WebBrowserDocument;
             if (WebBrowserDocument != null)
             {
-                var contentsPane = (Contents)DevEnv.Instance.WorkspaceEnvironment.GetPane("Contents");
+                var contentsPane = (Contents)DevEnvObj.Instance.Extendability.GetPane("Contents");
                 contentsPane.SelectNode(WebBrowserDocument.DocumentUri, TopicSelector.Previous);
             }
         }
     }
 
-    public class SelectActiveTopic : AbstractMenuCommand
+    public class SelectActiveTopic : AbstractCommand
     {
         public override void Run()
         {
-            WebBrowserDocument WebBrowserDocument = DevEnv.Instance.WorkspaceEnvironment.DockPanel.ActiveDocument as WebBrowserDocument;
+            WebBrowserDocument WebBrowserDocument = DevEnvObj.Instance.WorkspaceEnvironment.DockPanel.ActiveDocument as WebBrowserDocument;
             if (WebBrowserDocument != null) {
-                var contentsPane = (Contents) DevEnv.Instance.WorkspaceEnvironment.GetPane("Contents");
+                var contentsPane = (Contents) DevEnvObj.Instance.Extendability.GetPane("Contents");
                 contentsPane.SelectNode(WebBrowserDocument.DocumentUri);
                 contentsPane.Show();
             }
         }
     }
 
-    public class ShowDocHelp : AbstractMenuCommand
+    public class ShowDocHelp : AbstractCommand
     {
         public override void Run() {
-            WebBrowserDocument WebBrowserDocument = DevEnv.Instance.WorkspaceEnvironment.DockPanel.ActiveDocument as WebBrowserDocument;
+            WebBrowserDocument WebBrowserDocument = DevEnvObj.Instance.WorkspaceEnvironment.DockPanel.ActiveDocument as WebBrowserDocument;
             if (WebBrowserDocument != null) {
 
                 WebBrowserDocument.Navigate("nte-help://nasutek.help5.hoh/HelpOnHelp/html/af7524fe-8e2d-7a54-67cb-550f480f76c7.htm");
@@ -82,45 +82,45 @@ namespace DocExplorer.Resources {
             } else {
 
                 WebBrowserDocument WebBrowserDocument2 = new WebBrowserDocument();
-                WebBrowserDocument2.Show(DevEnv.Instance.WorkspaceEnvironment.DockPanel);
+                WebBrowserDocument2.Show(DevEnvObj.Instance.WorkspaceEnvironment.DockPanel);
                 WebBrowserDocument2.Navigate("nte-help://nasutek.help5.hoh/HelpOnHelp/html/af7524fe-8e2d-7a54-67cb-550f480f76c7.htm");
             }
         }
     }
 
-    public class ShowContents : AbstractMenuCommand {
+    public class ShowContents : AbstractCommand {
 
         public override void Run() {
-            DevEnv.Instance.WorkspaceEnvironment.GetPane("Contents").Show();
+            DevEnvObj.Instance.WorkspaceEnvironment.ShowPane(DevEnvObj.Instance.Extendability.GetPane("Contents"));
         }
     }
-    public class NotYetImplimented : AbstractMenuCommand {
+    public class NotYetImplimented : AbstractCommand {
 
         public override void Run() {
             System.Windows.Forms.MessageBox.Show("This feature is not yet implimented.", "NasuTek Document Explorer", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
         }
     }
-    public class ShowIndex : AbstractMenuCommand {
+    public class ShowIndex : AbstractCommand {
 
         public override void Run() {
-            DevEnv.Instance.WorkspaceEnvironment.GetPane("Index").Show();
+            DevEnvObj.Instance.WorkspaceEnvironment.ShowPane(DevEnvObj.Instance.Extendability.GetPane("Index"));
         }
     }
-    public class ShowFavorites : AbstractMenuCommand {
+    public class ShowFavorites : AbstractCommand {
 
         public override void Run() {
-            DevEnv.Instance.WorkspaceEnvironment.GetPane("Favorites").Show();
+            DevEnvObj.Instance.WorkspaceEnvironment.ShowPane(DevEnvObj.Instance.Extendability.GetPane("Favorites"));
         }
     }
-    public class AddFavoriteMenuCommand : AbstractMenuCommand {
+    public class AddFavoriteMenuCommand : AbstractCommand {
 
         public override void Run() {
-            ((Favorites)DevEnv.Instance.WorkspaceEnvironment.GetPane("Favorites")).AddFavoriteToRoot();
+            ((Favorites)DevEnvObj.Instance.Extendability.GetPane("Favorites")).AddFavoriteToRoot();
         }
     }
     public class GoBackWeb : AbstractCommand {
         public override void Run() {
-            WebBrowserDocument WebBrowserDocument = DevEnv.Instance.WorkspaceEnvironment.DockPanel.ActiveDocument as WebBrowserDocument;
+            WebBrowserDocument WebBrowserDocument = DevEnvObj.Instance.WorkspaceEnvironment.DockPanel.ActiveDocument as WebBrowserDocument;
             if (WebBrowserDocument != null) {
                 WebBrowserDocument.Back();
             }
@@ -128,7 +128,7 @@ namespace DocExplorer.Resources {
     }
     public class PrintWeb : AbstractCommand {
         public override void Run() {
-            WebBrowserDocument WebBrowserDocument = DevEnv.Instance.WorkspaceEnvironment.DockPanel.ActiveDocument as WebBrowserDocument;
+            WebBrowserDocument WebBrowserDocument = DevEnvObj.Instance.WorkspaceEnvironment.DockPanel.ActiveDocument as WebBrowserDocument;
             if (WebBrowserDocument != null) {
                 WebBrowserDocument.Print();
             }
@@ -136,7 +136,7 @@ namespace DocExplorer.Resources {
     }
     public class CopyWeb : AbstractCommand {
         public override void Run() {
-            WebBrowserDocument WebBrowserDocument = DevEnv.Instance.WorkspaceEnvironment.DockPanel.ActiveDocument as WebBrowserDocument;
+            WebBrowserDocument WebBrowserDocument = DevEnvObj.Instance.WorkspaceEnvironment.DockPanel.ActiveDocument as WebBrowserDocument;
             if (WebBrowserDocument != null) {
                 WebBrowserDocument.Copy();
             }
@@ -144,7 +144,7 @@ namespace DocExplorer.Resources {
     }
     public class FontSizeWeb : AbstractCommand {
         public override void Run() {
-            WebBrowserDocument WebBrowserDocument = DevEnv.Instance.WorkspaceEnvironment.DockPanel.ActiveDocument as WebBrowserDocument;
+            WebBrowserDocument WebBrowserDocument = DevEnvObj.Instance.WorkspaceEnvironment.DockPanel.ActiveDocument as WebBrowserDocument;
             if (WebBrowserDocument != null) {
                 WebBrowserDocument.FontSize();
             }
@@ -152,7 +152,7 @@ namespace DocExplorer.Resources {
     }
     public class GoForwardWeb : AbstractCommand {
         public override void Run() {
-            WebBrowserDocument WebBrowserDocument = DevEnv.Instance.WorkspaceEnvironment.DockPanel.ActiveDocument as WebBrowserDocument;
+            WebBrowserDocument WebBrowserDocument = DevEnvObj.Instance.WorkspaceEnvironment.DockPanel.ActiveDocument as WebBrowserDocument;
             if (WebBrowserDocument != null) {
                 WebBrowserDocument.Forward();
             }
@@ -160,7 +160,7 @@ namespace DocExplorer.Resources {
     }
     public class StopWeb : AbstractCommand {
         public override void Run() {
-            WebBrowserDocument WebBrowserDocument = DevEnv.Instance.WorkspaceEnvironment.DockPanel.ActiveDocument as WebBrowserDocument;
+            WebBrowserDocument WebBrowserDocument = DevEnvObj.Instance.WorkspaceEnvironment.DockPanel.ActiveDocument as WebBrowserDocument;
             if (WebBrowserDocument != null) {
                 WebBrowserDocument.Stop();
             }
@@ -168,7 +168,7 @@ namespace DocExplorer.Resources {
     }
     public class RefreshWeb : AbstractCommand {
         public override void Run() {
-            WebBrowserDocument WebBrowserDocument = DevEnv.Instance.WorkspaceEnvironment.DockPanel.ActiveDocument as WebBrowserDocument;
+            WebBrowserDocument WebBrowserDocument = DevEnvObj.Instance.WorkspaceEnvironment.DockPanel.ActiveDocument as WebBrowserDocument;
             if (WebBrowserDocument != null) {
                 WebBrowserDocument.Refresh();
             }
@@ -176,7 +176,7 @@ namespace DocExplorer.Resources {
     }
     public class HomeWeb : AbstractCommand {
         public override void Run() {
-            WebBrowserDocument WebBrowserDocument = DevEnv.Instance.WorkspaceEnvironment.DockPanel.ActiveDocument as WebBrowserDocument;
+            WebBrowserDocument WebBrowserDocument = DevEnvObj.Instance.WorkspaceEnvironment.DockPanel.ActiveDocument as WebBrowserDocument;
             if (WebBrowserDocument != null) {
                 //WebBrowserDocument.Back();
             }
@@ -184,12 +184,12 @@ namespace DocExplorer.Resources {
     }
     public class NewWebWindow : AbstractCommand {
         public override void Run() {
-            DevEnv.Instance.WorkspaceEnvironment.ShowPane(new WebBrowserDocument());
+            DevEnvObj.Instance.WorkspaceEnvironment.ShowPane(new WebBrowserDocument());
         }
     }
     public class SearchOpen : AbstractCommand {
         public override void Run() {
-            DevEnv.Instance.WorkspaceEnvironment.ShowPane(new Search());
+            DevEnvObj.Instance.WorkspaceEnvironment.ShowPane(new Search());
         }
     }
 }

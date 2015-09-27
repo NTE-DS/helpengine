@@ -21,7 +21,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
-using NasuTek.DevEnvironment.Extensibility.Workbench;
+using NasuTek.DevEnvironment.Extendability.Workbench;
 namespace DocExplorer.Resources
 {
 	public class Search : DevEnvPane
@@ -110,7 +110,6 @@ namespace DocExplorer.Resources
 			base.Controls.Add(this.searchControl1);
 			base.Controls.Add(this.panel1);
 			this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25f, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-			base.HideOnClose = true;
 			
 			base.Name = "Search";
 			base.TabText = "Search";

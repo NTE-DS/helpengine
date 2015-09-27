@@ -52,11 +52,9 @@ namespace HelpInstaller {
 Copyright (C) 2008-2015 NasuTek Enterprises
 
 Collection Registration:
-/CreateRegCollectionKey [/CollectionName:<Collection Name>
-    /CollectionPath:<Path to Collection>]
-        Registers the Collection to the global collection. If CollectionName 
-        and CollectionPath are not specified, then it will create the 
-        global collection registry key.
+/CreateRegCollectionKey /CollectionName:<Collection Name>
+    /CollectionPath:<Path to Collection>
+        Registers the Collection to the global collection.
 
 /CreateNamespaceCollection /CollectionPath:<Path>
         Creates a Namespace Collection
@@ -71,6 +69,8 @@ Collection Registration:
 Namespace Management:
 /CreateNamespace /CollectionPath:<Path> /NamespaceID:<ID>
     /FriendlyName:<Friendly Name> [/CombinedCollection]
+    [/LogoPath:<nte-help path to Logo>] 
+    [/InfoPath:<nte-help path to Info>]
         Creates a new namespace in the namespace collection with the
         following ID and Name. If CombinedCollection is specified
         it will create the namespace as a combined collection.
@@ -142,7 +142,7 @@ Namespace Plugin Management:
             else if (arg["CreateNamespace"] == "true")
             {
                 var helpInstaller = new HelpInstallerAPI(arg["CollectionPath"]);
-                helpInstaller.CreateNamespace(arg["NamespaceID"], arg["FriendlyName"], Convert.ToBoolean(arg["CombinedCollection"]));
+                helpInstaller.CreateNamespace(arg["NamespaceID"], arg["FriendlyName"], Convert.ToBoolean(arg["CombinedCollection"]), arg["InfoPath"], arg["LogoPath"]);
             }
             else if (arg["DeleteNamespace"] == "true")
             {

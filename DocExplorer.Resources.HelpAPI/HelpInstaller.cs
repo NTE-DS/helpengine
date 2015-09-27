@@ -36,7 +36,7 @@ namespace DocExplorer.Resources.HelpAPI {
             CreateRegCollectionKey("DefaultCollection", Path.Combine(installDir, "DefaultCollection"));
             var helpInstaller = new HelpInstaller(Path.Combine(installDir, "DefaultCollection"));
             helpInstaller.CreateCollection();
-            helpInstaller.CreateNamespace("NasuTek.Default.CC", "NasuTek Default Combined Collection", true);
+            helpInstaller.CreateNamespace("NasuTek.Default.CC", "NasuTek Default Combined Collection", true, null, null);
 
 #if DEBUG
             var kpl = Registry.LocalMachine.OpenSubKey("SOFTWARE\\NasuTek Enterprises\\Help\\5.0-Debug", true);
@@ -77,7 +77,7 @@ namespace DocExplorer.Resources.HelpAPI {
             doc.Save(Path.Combine(fullPath, "ContentStore", "InstalledBooks.xml"));
         }
 
-        public void CreateNamespace(string namespaceID, string friendlyName, bool combinedCollection) {
+        public void CreateNamespace(string namespaceID, string friendlyName, bool combinedCollection, string infoPath, string logoPath) {
             var doc = new XDocument();
             var rootElement =
                 new XElement("{http://schemas.nasutek.com/2013/Help5/Help5Extensions}NasuTekNamespaceDefinition");
@@ -85,6 +85,10 @@ namespace DocExplorer.Resources.HelpAPI {
             rootElement.Add(new XAttribute("id", namespaceID));
             rootElement.Add(new XAttribute("friendlyName", friendlyName));
             rootElement.Add(new XAttribute("isCombinedCollection", combinedCollection ? "True" : "False"));
+            if(!String.IsNullOrEmpty(infoPath))
+                rootElement.Add(new XAttribute("infoPath", infoPath));
+            if (!String.IsNullOrEmpty(logoPath))
+                rootElement.Add(new XAttribute("logoPath", logoPath));
 
             rootElement.Add(new XElement("{http://schemas.nasutek.com/2013/Help5/Help5Extensions}Plugins"));
             rootElement.Add(new XElement("{http://schemas.nasutek.com/2013/Help5/Help5Extensions}LinkedBooks"));
@@ -93,6 +97,11 @@ namespace DocExplorer.Resources.HelpAPI {
             doc.Add(rootElement);
 
             doc.Save(Path.Combine(collectionPath, "Namespaces", namespaceID + ".NxN"));
+        }
+
+        public void RegisterNamespace()
+        {
+
         }
 
         public void DeleteNamespace(string namespaceID) {

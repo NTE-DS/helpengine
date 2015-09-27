@@ -17,6 +17,7 @@
 
 using DocExplorer.Resources;
 using NasuTek.DevEnvironment;
+using NasuTek.Help;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -54,7 +55,24 @@ namespace DocExplorer
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            var devEnv = new DevEnv { ProductName = "NasuTek Document Explorer", ProductVersionCodebase = new Version(HelpVersion.CodebaseVersion), ProductVersionRelease = new Version(HelpVersion.ReleaseVersion), ProductBuildStage = HelpVersion.BuildStage, ProductBuildLab = HelpVersion.BuildLab, ProductCopyrightYear = "2008", WindowIcon = Properties.Resources.ProductIcon };
+            var devEnv = new DevEnv {
+                ProductName = "NasuTek Document Explorer",
+                ProductVersionCodebase = new Version(HelpVersion.CodebaseVersion),
+                ProductVersionRelease = new Version(HelpVersion.ReleaseVersion),
+                ProductBuildStage = HelpVersion.BuildStage,
+                ProductBuildLab = HelpVersion.BuildLab,
+                ProductCopyrightYear = "2008",
+                WindowIcon = Properties.Resources.ProductIcon,
+                ProductID = "Help",
+            };
+
+            if (arguments["LaunchedByDLL"] == "true")
+            {
+                devEnv.ShowIDEOnStartup = false;
+                devEnv.ExitThreadOnIDEExit = false;
+            }
+
+            devEnv.InitializeServices();
             devEnv.InitializeEnvironment(arguments);
         }
 

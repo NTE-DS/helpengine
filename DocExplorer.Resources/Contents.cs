@@ -22,7 +22,8 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using NasuTek.DevEnvironment.Documents;
-using NasuTek.DevEnvironment.Extensibility.Workbench;
+using NasuTek.DevEnvironment.Extendability.Workbench;
+
 namespace DocExplorer.Resources
 {
 	public class Contents : DevEnvPane
@@ -111,7 +112,6 @@ namespace DocExplorer.Resources
             this.Controls.Add(this.treeView1);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.HideOnClose = true;
             this.Name = "Contents";
             this.TabText = "Contents";
             this.Text = "Contents";

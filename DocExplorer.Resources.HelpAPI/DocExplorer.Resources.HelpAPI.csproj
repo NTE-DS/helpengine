@@ -71,7 +71,10 @@
     <Compile Include="HelpNamespace.cs" />
     <Compile Include="HelpObjectFile.cs" />
     <Compile Include="HelpScheme.cs" />
+    <Compile Include="HelpVersion.cs" />
+    <Compile Include="HelpVersion.gen.cs" />
     <Compile Include="HTMLMetaParser.cs" />
+    <Compile Include="IDevEnvRegSvc.cs" />
     <Compile Include="IHelpUi.cs" />
     <Compile Include="IIdentify.cs" />
     <Compile Include="IndexNode.cs" />
@@ -85,6 +88,11 @@
     </Compile>
     <Compile Include="NodeIconServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="SearchEngine.cs" />
     <Compile Include="SearchLocalHelp.cs" />
     <Compile Include="Settings.cs" />
@@ -95,8 +103,13 @@
       <LastGenOutput>NodeIcons.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="HelpVersion.gen.cs.autogen" />
     <None Include="XSDs\Help42Extensions.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -215,6 +228,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\icon_9.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\aboutbox.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

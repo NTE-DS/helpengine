@@ -29,11 +29,16 @@ namespace DocExplorer.Resources.HelpAPI
         private readonly System.Collections.Generic.List<string> _pluginObject = new System.Collections.Generic.List<string>();
 		private readonly System.Collections.Generic.List<HelpFile> _titles = new System.Collections.Generic.List<HelpFile>();
 
+        public string HelpDisplayLogoPath { get; private set; }
+        public string HelpDisplayCollectionInfoPath { get; private set; }
         public bool NamespaceTopicsLoaded { get; private set; }
         public bool CombinedCollection { get; private set; }
         public string ContentStorePath { get; private set; }
         public string NamespaceID { get; private set; }
         public string Title { get; private set; }
+        public string RegisteredUser { get; private set; }
+        public string RegisteredCompany { get; private set; }
+        public string RegisteredSerial { get; private set; }
         private XDocument namespaceDocument;
 
 		public string[] NamespacePlugins
@@ -95,7 +100,7 @@ namespace DocExplorer.Resources.HelpAPI
 			this.ContentStorePath = collectionInfoPath;
 			this.NamespaceID = namespaceName;
 			this.Title = title;
-		}
+        }
 
 		internal HelpNamespace(string namespaceXmlPath)
 		{
@@ -106,6 +111,24 @@ namespace DocExplorer.Resources.HelpAPI
             ContentStorePath = Path.GetFullPath(Path.Combine(Path.GetDirectoryName(namespaceXmlPath), "..", "ContentStore"));
             NamespaceID = namespaceRoot.Attribute("id").Value;
             Title = namespaceRoot.Attribute("friendlyName").Value;
+
+            HelpDisplayLogoPath = "nte-help://nte-help5-common/logo.html";
+            HelpDisplayCollectionInfoPath = "nte-help://nte-help5-common/collections.html";
+            RegisteredUser = "Unregistered User";
+            RegisteredCompany = "Unregistered Company";
+            RegisteredSerial = "xxxxx-xxxxx-xxxxx-xxxxx-xxxxx";
+
+            if (namespaceRoot.Attribute("logoPath") != null)
+                HelpDisplayLogoPath = namespaceRoot.Attribute("logoPath").Value;
+            if (namespaceRoot.Attribute("infoPath") != null)
+                HelpDisplayCollectionInfoPath = namespaceRoot.Attribute("infoPath").Value;
+            if (namespaceRoot.Attribute("userName") != null)
+                RegisteredUser = namespaceRoot.Attribute("userName").Value;
+            if (namespaceRoot.Attribute("companyName") != null)
+                RegisteredCompany = namespaceRoot.Attribute("companyName").Value;
+            if (namespaceRoot.Attribute("serialNumber") != null)
+                RegisteredSerial = namespaceRoot.Attribute("serialNumber").Value;
+
             CombinedCollection = Boolean.Parse(namespaceRoot.Attribute("isCombinedCollection").Value);
 
             var pluginsElement = namespaceRoot.Element("{http://schemas.nasutek.com/2013/Help5/Help5Extensions}Plugins");

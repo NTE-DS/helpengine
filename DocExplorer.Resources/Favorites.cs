@@ -24,7 +24,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using NasuTek.DevEnvironment;
 using NasuTek.DevEnvironment.Documents;
-using NasuTek.DevEnvironment.Extensibility.Workbench;
+using NasuTek.DevEnvironment.Extendability.Workbench;
 namespace DocExplorer.Resources
 {
 	public class Favorites : DevEnvPane
@@ -132,7 +132,6 @@ namespace DocExplorer.Resources
             this.Controls.Add(this.treeView1);
             this.Controls.Add(this.toolStrip1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.HideOnClose = true;
             this.Name = "Favorites";
             this.TabText = "Favorites";
             this.Text = "Favorites";
@@ -206,21 +205,21 @@ namespace DocExplorer.Resources
 		}
 
         public void AddFavoriteToRoot() {
-            if (DevEnv.Instance.WorkspaceEnvironment.DockPanel.ActiveDocument is WebBrowserDocument) {
-                WebBrowserDocument WebBrowserDocument2 = (WebBrowserDocument)DevEnv.Instance.WorkspaceEnvironment.DockPanel.ActiveDocument;
+            if (DevEnvObj.Instance.WorkspaceEnvironment.DockPanel.ActiveDocument is WebBrowserDocument) {
+                WebBrowserDocument WebBrowserDocument2 = (WebBrowserDocument)DevEnvObj.Instance.WorkspaceEnvironment.DockPanel.ActiveDocument;
                 new AddFavorite(HelpAPI.Help.Instance.SettingsInstance.RootFavorites[HelpAPI.Help.Instance.ActiveNamespace.NamespaceID], WebBrowserDocument2.Url, WebBrowserDocument2.Text).ShowDialog();
             }
             this.RefreshNodes();
         }
 
         public void AddFavorite() {
-            if (DevEnv.Instance.WorkspaceEnvironment.DockPanel.ActiveDocument is WebBrowserDocument) {
+            if (DevEnvObj.Instance.WorkspaceEnvironment.DockPanel.ActiveDocument is WebBrowserDocument) {
                 if (this.treeView1.SelectedNode != null && this.treeView1.SelectedNode.Tag is FavoriteFolder) {
-                    WebBrowserDocument WebBrowserDocument = (WebBrowserDocument)DevEnv.Instance.WorkspaceEnvironment.DockPanel.ActiveDocument;
+                    WebBrowserDocument WebBrowserDocument = (WebBrowserDocument)DevEnvObj.Instance.WorkspaceEnvironment.DockPanel.ActiveDocument;
                     new AddFavorite((FavoriteFolder)this.treeView1.SelectedNode.Tag, WebBrowserDocument.Url, WebBrowserDocument.Text).ShowDialog();
                 } else {
                     if (this.treeView1.SelectedNode != null && this.treeView1.SelectedNode.Text == "Favorites") {
-                        WebBrowserDocument WebBrowserDocument2 = (WebBrowserDocument)DevEnv.Instance.WorkspaceEnvironment.DockPanel.ActiveDocument;
+                        WebBrowserDocument WebBrowserDocument2 = (WebBrowserDocument)DevEnvObj.Instance.WorkspaceEnvironment.DockPanel.ActiveDocument;
                         new AddFavorite(HelpAPI.Help.Instance.SettingsInstance.RootFavorites[HelpAPI.Help.Instance.ActiveNamespace.NamespaceID], WebBrowserDocument2.Url, WebBrowserDocument2.Text).ShowDialog();
                     }
                 }

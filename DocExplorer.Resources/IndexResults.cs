@@ -21,7 +21,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 using NasuTek.DevEnvironment.Documents;
-using NasuTek.DevEnvironment.Extensibility.Workbench;
+using NasuTek.DevEnvironment.Extendability.Workbench;
 namespace DocExplorer.Resources
 {
 	public class IndexResults : DevEnvPane
@@ -155,7 +155,6 @@ namespace DocExplorer.Resources
 			base.ClientSize = new System.Drawing.Size(666, 262);
 			base.Controls.Add(this.listView1);
 			this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25f, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-			base.HideOnClose = true;
 			
 			base.Name = "IndexResults";
 			base.TabText = "Index Results";

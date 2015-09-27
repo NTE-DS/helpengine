@@ -151,7 +151,7 @@ namespace DocExplorer.Resources
 		private void ResultItem_DoubleClick(object sender, System.EventArgs e)
 		{
             WebBrowserDocument browserWindow = new WebBrowserDocument();
-            DevEnv.Instance.WorkspaceEnvironment.ShowPane(browserWindow);
+            DevEnvObj.Instance.WorkspaceEnvironment.ShowPane(browserWindow);
 			browserWindow.Navigate("nte-help://" + this.Namespace + "/" + this.HelpFileNamespace + "/" + this.Url);
 		}
 		private void ResultItem_Click(object sender, System.EventArgs e)

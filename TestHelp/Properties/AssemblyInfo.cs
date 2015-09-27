@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("NasuTekLibraryCGI")]
+[assembly: AssemblyTitle("TestHelp")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("NasuTekLibraryCGI")]
+[assembly: AssemblyProduct("TestHelp")]
 [assembly: AssemblyCopyright("Copyright ©  2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("dceaf585-6b6f-462c-b579-144e8092f76a")]
+[assembly: Guid("a6a3adc2-35c0-435a-ac40-8d4240376b82")]
 
 // Version information for an assembly consists of the following four values:
 //

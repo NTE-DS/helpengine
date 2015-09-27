@@ -127,11 +127,11 @@ namespace DocExplorer.Resources.HelpAPI {
         }
 
         public static string GetRegisteredCollection(string collectionName) {
-#if DEBUG
-            var regPath = Microsoft.Win32.Registry.LocalMachine.OpenSubKey("SOFTWARE\\NasuTek Enterprises\\Help\\5.0-Debug\\RegisteredCollections");
-#else
-            var regPath = Microsoft.Win32.Registry.LocalMachine.OpenSubKey("SOFTWARE\\NasuTek Enterprises\\Help\\5.0\\RegisteredCollections");
-#endif
+    #if DEBUG
+                var regPath = Microsoft.Win32.Registry.LocalMachine.OpenSubKey("SOFTWARE\\NasuTek Enterprises\\Help\\5.2-Debug\\RegisteredCollections");
+    #else
+                var regPath = Microsoft.Win32.Registry.LocalMachine.OpenSubKey("SOFTWARE\\NasuTek Enterprises\\Help\\5.2\\RegisteredCollections");
+    #endif
 
             return (string)regPath.GetValue(collectionName);
         }

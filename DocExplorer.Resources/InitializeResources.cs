@@ -15,7 +15,7 @@
  * limitations under the License.
  ***************************************************************************************************/
 
-using NasuTek.DevEnvironment.Extensibility.Addins;
+using NasuTek.DevEnvironment.Extendability;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,15 +24,11 @@ using System.Threading.Tasks;
 
 namespace DocExplorer.Resources
 {
-    public class InitializeResources : ICommand
+    public class InitializeResources : AbstractCommand
     {
-        public object Owner { get; set; }
-
-        public void Run()
+        public override void Run()
         {
-            ResourceService.RegisterImages("DocExplorer.Resources.Properties.Resources", typeof(InitializeResources).Assembly);
+            //ResourceService.RegisterImages("DocExplorer.Resources.Properties.Resources", typeof(InitializeResources).Assembly);
         }
-
-        public event EventHandler OwnerChanged;
     }
 }

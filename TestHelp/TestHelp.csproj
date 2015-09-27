@@ -1,17 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
-  <Import Project="$(SolutionDir)NDE_BuildConfig.proj" />
-  <Import Project="$(SolutionDir)NDE_BuildConfig.user.proj" Condition="Exists('$(SolutionDir)NDE_BuildConfig.user.proj')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{707C3910-052D-44E1-A63C-353F83926B10}</ProjectGuid>
+    <ProjectGuid>{A6A3ADC2-35C0-435A-AC40-8D4240376B82}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DocExplorer</RootNamespace>
-    <AssemblyName>DocExplorer</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <RootNamespace>TestHelp</RootNamespace>
+    <AssemblyName>TestHelp</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -19,36 +17,21 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>$(BuildPath)\Common8\Help5\</OutputPath>
+    <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>
-    </DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>x86</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>$(BuildPath)\Common8\Help5\</OutputPath>
+    <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>
-    </DocumentationFile>
-  </PropertyGroup>
-  <PropertyGroup>
-    <ApplicationIcon>HelpIcon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ntedevenv, Version=8.0.0.0, Culture=neutral, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>$(DevEnvRoot)\ntedevenv.dll</HintPath>
-    </Reference>
-    <Reference Include="devenvapi, Version=8.0.0.0, Culture=neutral, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>$(DevEnvRoot)\devenvapi.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -61,17 +44,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SimpleUI\SimpleUIForm.cs">
+    <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SimpleUI\SimpleUIForm.Designer.cs">
-      <DependentUpon>SimpleUIForm.cs</DependentUpon>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="SimpleUI\HelpUi.cs" />
-    <Compile Include="SimpleUI\Program.cs" />
-    <Compile Include="SimpleUI\TOCNode.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -80,11 +63,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="SimpleUI\SimpleUIForm.resx">
-      <DependentUpon>SimpleUIForm.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -96,35 +75,11 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\DocExplorer.Resources.HelpAPI\DocExplorer.Resources.HelpAPI.csproj">
-      <Project>{b232bd2a-44e0-45c4-8c4a-1bc074efcf7a}</Project>
-      <Name>DocExplorer.Resources.HelpAPI</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\DocExplorer.Resources\DocExplorer.Resources.csproj">
-      <Project>{a31bcacf-f36a-408d-a96a-2ac3de1baf38}</Project>
-      <Name>DocExplorer.Resources</Name>
-    </ProjectReference>
     <ProjectReference Include="..\NasuTek.Help\NasuTek.Help.csproj">
       <Project>{9eb29a1a-dac2-4cfa-a5d9-65d0c93649f2}</Project>
       <Name>NasuTek.Help</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Content Include="HelpIcon.ico" />
-    <None Include="Resources\stop.png" />
-    <None Include="Resources\arrow_left.png" />
-    <None Include="Resources\arrow_refresh.png" />
-    <None Include="Resources\arrow_right.png" />
-    <None Include="Resources\book.png" />
-    <None Include="Resources\font.png" />
-    <None Include="Resources\house.png" />
-    <None Include="Resources\printer.png" />
-    <Content Include="Resources\ProductIcon.ico" />
-  </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

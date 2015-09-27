@@ -17,6 +17,7 @@
 
 using DocExplorer.Resources.HelpAPI;
 using NasuTek.DevEnvironment;
+using NasuTek.DevEnvironment.Extendability;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,21 +33,32 @@ namespace DocExplorer.Resources {
         }
 
         public void SetActiveCollection() {
-            ((Contents)DevEnv.Instance.WorkspaceEnvironment.GetPane("Contents")).Unregister();
-            ((Index)DevEnv.Instance.WorkspaceEnvironment.GetPane("Index")).Unregister();
-            ((Favorites)DevEnv.Instance.WorkspaceEnvironment.GetPane("Favorites")).Unregister();
+            ((Contents)DevEnvObj.Instance.Extendability.GetPane("Contents")).Unregister();
+            ((Index)DevEnvObj.Instance.Extendability.GetPane("Index")).Unregister();
+            ((Favorites)DevEnvObj.Instance.Extendability.GetPane("Favorites")).Unregister();
 
             if (HelpAPI.Help.Instance.ActiveNamespace == null) {
-                DevEnv.Instance.WorkspaceEnvironment.Text = "NasuTek Document Explorer";
+                DevEnvObj.Instance.WorkspaceEnvironment.Text = "NasuTek Document Explorer";
                 return;
             }
-            DevEnv.Instance.WorkspaceEnvironment.Text = "NasuTek Document Explorer" + " - " + HelpAPI.Help.Instance.ActiveNamespace.Title;
+            DevEnvObj.Instance.WorkspaceEnvironment.Text = "NasuTek Document Explorer" + " - " + HelpAPI.Help.Instance.ActiveNamespace.Title;
         }
 
         public void RefreshFilters() {
-            ((Contents)DevEnv.Instance.WorkspaceEnvironment.GetPane("Contents")).RefreshFilters();
-            ((Index)DevEnv.Instance.WorkspaceEnvironment.GetPane("Index")).RefreshFilters();
-            ((Favorites)DevEnv.Instance.WorkspaceEnvironment.GetPane("Favorites")).RefreshNodes();
+            ((Contents)DevEnvObj.Instance.Extendability.GetPane("Contents")).RefreshFilters();
+            ((Index)DevEnvObj.Instance.Extendability.GetPane("Index")).RefreshFilters();
+            ((Favorites)DevEnvObj.Instance.Extendability.GetPane("Favorites")).RefreshNodes();
+        }
+    }
+
+    internal class DevEnvObj
+    {
+        public static DevEnv Instance
+        {
+            get
+            {
+                return ((DevEnv)DevEnvSvc.GetService(DevEnvSvc.DevEnvObject));
+            }
         }
     }
 }

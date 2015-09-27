@@ -1,16 +1,17 @@
-﻿using System.Reflection;
+﻿using DocExplorer.Resources;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("DocExplorer")]
+[assembly: AssemblyTitle("NasuTek Document Explorer")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("DocExplorer")]
-[assembly: AssemblyCopyright("Copyright ©  2013")]
+[assembly: AssemblyCompany("NasuTek Enterprises")]
+[assembly: AssemblyProduct("NasuTek Development Studio")]
+[assembly: AssemblyCopyright("Copyright © 2005-2015 NasuTek Enterprises")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +21,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("89770308-b6f1-47dd-b832-b6c1ab956dff")]
+[assembly: Guid("7286dab1-d5d1-4c31-a2b3-93b5c0a596e5")]
 
 // Version information for an assembly consists of the following four values:
 //
@@ -32,5 +33,5 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: AssemblyVersion(HelpVersion.CodebaseVersion)]
+[assembly: AssemblyFileVersion(HelpVersion.CodebaseVersion)]

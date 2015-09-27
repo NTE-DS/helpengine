@@ -8,10 +8,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace NasuTekLibraryCGI {
-    using System;
-    
-    
+namespace TestHelp.Properties
+{
+
+
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>
@@ -22,61 +22,49 @@ namespace NasuTekLibraryCGI {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
-        
+    internal class Resources
+    {
+
         private static global::System.Resources.ResourceManager resourceMan;
-        
+
         private static global::System.Globalization.CultureInfo resourceCulture;
-        
+
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Resources() {
+        internal Resources()
+        {
         }
-        
+
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
-            get {
-                if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("NasuTekLibraryCGI.Resources", typeof(Resources).Assembly);
+        internal static global::System.Resources.ResourceManager ResourceManager
+        {
+            get
+            {
+                if ((resourceMan == null))
+                {
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("TestHelp.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
             }
         }
-        
+
         /// <summary>
         ///   Overrides the current thread's CurrentUICulture property for all
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
-            get {
+        internal static global::System.Globalization.CultureInfo Culture
+        {
+            get
+            {
                 return resourceCulture;
             }
-            set {
+            set
+            {
                 resourceCulture = value;
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to 
-        ///&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;&gt;
-        ///&lt;html&gt;
-        ///    &lt;head&gt;
-        ///        &lt;title&gt;NasuTek Help Library Explorer&lt;/title&gt;
-        ///        &lt;link rel=&quot;stylesheet&quot; href=&quot;interface-resources/TOC.css&quot;&gt;
-        ///        &lt;link rel=&quot;shortcut icon&quot; href=&quot;favicon.ico&quot;/&gt;
-        ///        &lt;script type=&quot;text/javascript&quot; src=&quot;interface-resources/TOC.js&quot;&gt;&lt;/script&gt;
-        ///    &lt;/head&gt;
-        ///    &lt;body onload=&quot;javascript: Initialize(&apos;.aspx&apos;);&quot; onresize=&quot;javascript: ResizeTree();&quot;&gt;
-        ///        &lt;div id=&quot;TOCDiv&quot; class=&quot;TOCDiv&quot;&gt;
-        ///            &lt;div i [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string UserInterface {
-            get {
-                return ResourceManager.GetString("UserInterface", resourceCulture);
             }
         }
     }

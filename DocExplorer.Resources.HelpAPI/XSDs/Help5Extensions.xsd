@@ -31,7 +31,25 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Filters"/>
+        <xs:element name="Filters">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Filter" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Parameter" minOccurs="0" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:attribute name="id" type="xs:string" use="required"/>
+                        <xs:attribute name="value" type="xs:string" use="required"/>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                  <xs:attribute name="id" type="xs:string" use="required"/>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:sequence>
       <xs:attribute name="id" type="xs:string" use="required">
         <xs:annotation>
@@ -46,6 +64,31 @@
       <xs:attribute name="isCombinedCollection" type="xs:boolean" use="required">
         <xs:annotation>
           <xs:documentation>Is this a Combined Collection where it links to other namespaces or a standalone namespace?</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="logoPath" type="xs:string" use="optional">
+        <xs:annotation>
+          <xs:documentation>The Friendly Name of the namespace (ex. NasuTek Help 5 Namespace).</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="infoPath" type="xs:string" use="optional">
+        <xs:annotation>
+          <xs:documentation>The Friendly Name of the namespace (ex. NasuTek Help 5 Namespace).</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="userName" type="xs:string" use="optional">
+        <xs:annotation>
+          <xs:documentation>The Friendly Name of the namespace (ex. NasuTek Help 5 Namespace).</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="companyName" type="xs:string" use="optional">
+        <xs:annotation>
+          <xs:documentation>The Friendly Name of the namespace (ex. NasuTek Help 5 Namespace).</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="serialNumber" type="xs:string" use="optional">
+        <xs:annotation>
+          <xs:documentation>The Friendly Name of the namespace (ex. NasuTek Help 5 Namespace).</xs:documentation>
         </xs:annotation>
       </xs:attribute>
     </xs:complexType>

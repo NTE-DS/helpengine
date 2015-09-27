@@ -22,7 +22,7 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using NasuTek.DevEnvironment.Documents;
-using NasuTek.DevEnvironment.Extensibility.Workbench;
+using NasuTek.DevEnvironment.Extendability.Workbench;
 namespace DocExplorer.Resources
 {
 	public class Index : DevEnvPane
@@ -46,76 +46,94 @@ namespace DocExplorer.Resources
 		}
 		private void InitializeComponent()
 		{
-			ComponentResourceManager componentResourceManager = new ComponentResourceManager(typeof(Index));
-			this.panel1 = new Panel();
-			this.textBox1 = new TextBox();
-			this.label2 = new Label();
-			this.comboBox2 = new ComboBox();
-			this.label1 = new Label();
-			this.listBox1 = new ListBox();
-			this.panel1.SuspendLayout();
-			base.SuspendLayout();
-			this.panel1.AutoSize = true;
-			this.panel1.Controls.Add(this.textBox1);
-			this.panel1.Controls.Add(this.label2);
-			this.panel1.Controls.Add(this.comboBox2);
-			this.panel1.Controls.Add(this.label1);
-			this.panel1.Dock = DockStyle.Top;
-			this.panel1.Location = new System.Drawing.Point(0, 0);
-			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(284, 67);
-			this.panel1.TabIndex = 1;
-			this.textBox1.Dock = DockStyle.Top;
-			this.textBox1.Location = new System.Drawing.Point(0, 47);
-			this.textBox1.Name = "textBox1";
-			this.textBox1.Size = new System.Drawing.Size(284, 20);
-			this.textBox1.TabIndex = 3;
-			this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-			this.label2.AutoSize = true;
-			this.label2.Dock = DockStyle.Top;
-			this.label2.Location = new System.Drawing.Point(0, 34);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(49, 13);
-			this.label2.TabIndex = 2;
-			this.label2.Text = "&Look for:";
-			this.comboBox2.Dock = DockStyle.Top;
-			this.comboBox2.DropDownStyle = ComboBoxStyle.DropDownList;
-			this.comboBox2.FormattingEnabled = true;
-			this.comboBox2.Location = new System.Drawing.Point(0, 13);
-			this.comboBox2.Name = "comboBox2";
-			this.comboBox2.Size = new System.Drawing.Size(284, 21);
-			this.comboBox2.TabIndex = 1;
-			this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
-			this.label1.AutoSize = true;
-			this.label1.Dock = DockStyle.Top;
-			this.label1.Location = new System.Drawing.Point(0, 0);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(58, 13);
-			this.label1.TabIndex = 0;
-			this.label1.Text = "F&iltered by:";
-			this.listBox1.Dock = DockStyle.Fill;
-			this.listBox1.FormattingEnabled = true;
-			this.listBox1.HorizontalScrollbar = true;
-			this.listBox1.Location = new System.Drawing.Point(0, 67);
-			this.listBox1.Name = "listBox1";
-			this.listBox1.Size = new System.Drawing.Size(284, 195);
-			this.listBox1.TabIndex = 2;
-			this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
-			base.AutoScaleDimensions = new System.Drawing.SizeF(6f, 13f);
-			
-			base.ClientSize = new System.Drawing.Size(284, 262);
-			base.Controls.Add(this.listBox1);
-			base.Controls.Add(this.panel1);
-			this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25f, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-			base.HideOnClose = true;
-			
-			base.Name = "Index";
-			base.TabText = "Index";
-			this.Text = "Index";
-			this.panel1.ResumeLayout(false);
-			this.panel1.PerformLayout();
-			base.ResumeLayout(false);
-			base.PerformLayout();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.panel1.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // panel1
+            // 
+            this.panel1.AutoSize = true;
+            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.comboBox2);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(284, 67);
+            this.panel1.TabIndex = 1;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.textBox1.Location = new System.Drawing.Point(0, 47);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(284, 20);
+            this.textBox1.TabIndex = 3;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label2.Location = new System.Drawing.Point(0, 34);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(49, 13);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "&Look for:";
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(0, 13);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(284, 21);
+            this.comboBox2.TabIndex = 1;
+            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label1.Location = new System.Drawing.Point(0, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(58, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "F&iltered by:";
+            // 
+            // listBox1
+            // 
+            this.listBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.HorizontalScrollbar = true;
+            this.listBox1.Location = new System.Drawing.Point(0, 67);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(284, 195);
+            this.listBox1.TabIndex = 2;
+            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
+            // 
+            // Index
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.ClientSize = new System.Drawing.Size(284, 262);
+            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.panel1);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Name = "Index";
+            this.TabText = "Index";
+            this.Text = "Index";
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
 		}
 		public Index()
 		{
