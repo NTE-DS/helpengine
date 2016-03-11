@@ -17,7 +17,7 @@
 
 using DocExplorer.Resources.HelpAPI;
 using NasuTek.DevEnvironment;
-using NasuTek.DevEnvironment.Extendability;
+using NasuTek.DevEnvironment.Extensibility;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,9 +33,9 @@ namespace DocExplorer.Resources {
         }
 
         public void SetActiveCollection() {
-            ((Contents)DevEnvObj.Instance.Extendability.GetPane("Contents")).Unregister();
-            ((Index)DevEnvObj.Instance.Extendability.GetPane("Index")).Unregister();
-            ((Favorites)DevEnvObj.Instance.Extendability.GetPane("Favorites")).Unregister();
+            ((Contents)DevEnvObj.Instance.Extensibility.GetPane("Contents")).Unregister();
+            ((Index)DevEnvObj.Instance.Extensibility.GetPane("Index")).Unregister();
+            ((Favorites)DevEnvObj.Instance.Extensibility.GetPane("Favorites")).Unregister();
 
             if (HelpAPI.Help.Instance.ActiveNamespace == null) {
                 DevEnvObj.Instance.WorkspaceEnvironment.Text = "NasuTek Document Explorer";
@@ -45,9 +45,9 @@ namespace DocExplorer.Resources {
         }
 
         public void RefreshFilters() {
-            ((Contents)DevEnvObj.Instance.Extendability.GetPane("Contents")).RefreshFilters();
-            ((Index)DevEnvObj.Instance.Extendability.GetPane("Index")).RefreshFilters();
-            ((Favorites)DevEnvObj.Instance.Extendability.GetPane("Favorites")).RefreshNodes();
+            ((Contents)DevEnvObj.Instance.Extensibility.GetPane("Contents")).RefreshFilters();
+            ((Index)DevEnvObj.Instance.Extensibility.GetPane("Index")).RefreshFilters();
+            ((Favorites)DevEnvObj.Instance.Extensibility.GetPane("Favorites")).RefreshNodes();
         }
     }
 

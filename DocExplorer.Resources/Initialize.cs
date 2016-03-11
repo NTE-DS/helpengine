@@ -40,7 +40,7 @@ using System.Text;
 using System.Threading.Tasks;
 using NasuTek.DevEnvironment;
 using NasuTek.DevEnvironment.Documents;
-using NasuTek.DevEnvironment.Extendability;
+using NasuTek.DevEnvironment.Extensibility;
 
 namespace DocExplorer.Resources
 {

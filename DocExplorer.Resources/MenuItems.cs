@@ -23,7 +23,7 @@ using System.Text;
 using System.Threading.Tasks;
 using NasuTek.DevEnvironment;
 using NasuTek.DevEnvironment.Documents;
-using NasuTek.DevEnvironment.Extendability;
+using NasuTek.DevEnvironment.Extensibility;
 
 namespace DocExplorer.Resources {
     public class AboutDocExplorer : AbstractCommand {
@@ -39,7 +39,7 @@ namespace DocExplorer.Resources {
             var WebBrowserDocument = DevEnvObj.Instance.WorkspaceEnvironment.DockPanel.ActiveDocument as WebBrowserDocument;
             if (WebBrowserDocument != null)
             {
-                var contentsPane = (Contents)DevEnvObj.Instance.Extendability.GetPane("Contents");
+                var contentsPane = (Contents)DevEnvObj.Instance.Extensibility.GetPane("Contents");
                 contentsPane.SelectNode(WebBrowserDocument.DocumentUri, TopicSelector.Next);
             }
         }
@@ -52,7 +52,7 @@ namespace DocExplorer.Resources {
             WebBrowserDocument WebBrowserDocument = DevEnvObj.Instance.WorkspaceEnvironment.DockPanel.ActiveDocument as WebBrowserDocument;
             if (WebBrowserDocument != null)
             {
-                var contentsPane = (Contents)DevEnvObj.Instance.Extendability.GetPane("Contents");
+                var contentsPane = (Contents)DevEnvObj.Instance.Extensibility.GetPane("Contents");
                 contentsPane.SelectNode(WebBrowserDocument.DocumentUri, TopicSelector.Previous);
             }
         }
@@ -64,7 +64,7 @@ namespace DocExplorer.Resources {
         {
             WebBrowserDocument WebBrowserDocument = DevEnvObj.Instance.WorkspaceEnvironment.DockPanel.ActiveDocument as WebBrowserDocument;
             if (WebBrowserDocument != null) {
-                var contentsPane = (Contents) DevEnvObj.Instance.Extendability.GetPane("Contents");
+                var contentsPane = (Contents) DevEnvObj.Instance.Extensibility.GetPane("Contents");
                 contentsPane.SelectNode(WebBrowserDocument.DocumentUri);
                 contentsPane.Show();
             }
@@ -91,7 +91,7 @@ namespace DocExplorer.Resources {
     public class ShowContents : AbstractCommand {
 
         public override void Run() {
-            DevEnvObj.Instance.WorkspaceEnvironment.ShowPane(DevEnvObj.Instance.Extendability.GetPane("Contents"));
+            DevEnvObj.Instance.Extensibility.GetPane("Contents").Show();
         }
     }
     public class NotYetImplimented : AbstractCommand {
@@ -103,19 +103,19 @@ namespace DocExplorer.Resources {
     public class ShowIndex : AbstractCommand {
 
         public override void Run() {
-            DevEnvObj.Instance.WorkspaceEnvironment.ShowPane(DevEnvObj.Instance.Extendability.GetPane("Index"));
+            DevEnvObj.Instance.Extensibility.GetPane("Index").Show();
         }
     }
     public class ShowFavorites : AbstractCommand {
 
         public override void Run() {
-            DevEnvObj.Instance.WorkspaceEnvironment.ShowPane(DevEnvObj.Instance.Extendability.GetPane("Favorites"));
+            DevEnvObj.Instance.Extensibility.GetPane("Favorites").Show();
         }
     }
     public class AddFavoriteMenuCommand : AbstractCommand {
 
         public override void Run() {
-            ((Favorites)DevEnvObj.Instance.Extendability.GetPane("Favorites")).AddFavoriteToRoot();
+            ((Favorites)DevEnvObj.Instance.Extensibility.GetPane("Favorites")).AddFavoriteToRoot();
         }
     }
     public class GoBackWeb : AbstractCommand {

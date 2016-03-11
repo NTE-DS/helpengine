@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<NasuTekDE>
+  <Packages>
+    <Package guid="{0589A7C4-3758-4BF1-B1D3-F26331F875F8}" name="Help 5 DevEnv UI Package"
+       Assembly="DocExplorer.Resources, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null" PackageClass="DocExplorer.Resources.HelpUI">
+      <Dependency Assembly="DocExplorer.Resources.HelpAPI, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null" />
+    </Package>
+  </Packages>
+
+  <WebSchemes>
+    <WebScheme guid="{4CA8BB64-60F6-49E9-8018-6BA52B2874C2}" name="NasuTek Help Web Scheme"
+               WebSchemeAssembly="DocExplorer.Resources.HelpAPI, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null"
+               WebSchemeClass="DocExplorer.Resources.HelpAPI.HelpScheme"
+               Scheme="nte-help" />
+  </WebSchemes>
+</NasuTekDE>

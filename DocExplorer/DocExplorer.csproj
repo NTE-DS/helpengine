@@ -122,6 +122,10 @@
     <None Include="Resources\font.png" />
     <None Include="Resources\house.png" />
     <None Include="Resources\printer.png" />
+    <Content Include="Install.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\ProductIcon.ico" />
   </ItemGroup>
   <ItemGroup />

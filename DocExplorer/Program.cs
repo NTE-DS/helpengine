@@ -17,6 +17,7 @@
 
 using DocExplorer.Resources;
 using NasuTek.DevEnvironment;
+using NasuTek.DevEnvironment.Extensibility;
 using NasuTek.Help;
 using System;
 using System.Collections.Generic;
@@ -55,7 +56,9 @@ namespace DocExplorer
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            var devEnv = new DevEnv {
+
+            var settings = new DevEnvSettings
+            {
                 ProductName = "NasuTek Document Explorer",
                 ProductVersionCodebase = new Version(HelpVersion.CodebaseVersion),
                 ProductVersionRelease = new Version(HelpVersion.ReleaseVersion),
@@ -65,15 +68,14 @@ namespace DocExplorer
                 WindowIcon = Properties.Resources.ProductIcon,
                 ProductID = "Help",
             };
-
+            
             if (arguments["LaunchedByDLL"] == "true")
             {
-                devEnv.ShowIDEOnStartup = false;
-                devEnv.ExitThreadOnIDEExit = false;
+                settings.ShowIDEOnStartup = false;
+                settings.ExitThreadOnIDEExit = false;
             }
 
-            devEnv.InitializeServices();
-            devEnv.InitializeEnvironment(arguments);
+            DevEnvSvc.InitializeDevEnv(settings, args, false);
         }
 
         static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e) {
