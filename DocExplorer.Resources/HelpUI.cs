@@ -1,4 +1,5 @@
-﻿using NasuTek.DevEnvironment.Extensibility;
+﻿using NasuTek.DevEnvironment;
+using NasuTek.DevEnvironment.Extensibility;
 using NasuTek.DevEnvironment.MenuCommands;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,7 @@ namespace DocExplorer.Resources
         {
             var uiSvc = (IDevEnvUISvc)DevEnvSvc.GetService(DevEnvSvc.UISvc);
             var pluginSvc = (IDevEnvPackageSvc)DevEnvSvc.GetService(DevEnvSvc.PackageSvc);
+            var devEnvObj = (DevEnv)DevEnvSvc.GetService(DevEnvSvc.DevEnvObject);
 
             uiSvc.RegisterPane(new Contents() { Icon = Icon.FromHandle(Properties.Resources.Contents.GetHicon())});
             uiSvc.RegisterPane(new Index() { Icon = Icon.FromHandle(Properties.Resources.Index.GetHicon())});
@@ -59,6 +61,7 @@ namespace DocExplorer.Resources
             uiSvc.AddRootMenuItem(windowMenu);
             uiSvc.AddRootMenuItem(helpMenu);
 
+            //devEnvObj.ActiveWorkbenchSettings = Encoding.UTF8.GetBytes(Properties.Resources.InitialUi);
             pluginSvc.AttachCommand(DevEnvSvc.CmdAfterInitialization, new Initialize());
 
             var stdTb = new ToolBar("Standard");

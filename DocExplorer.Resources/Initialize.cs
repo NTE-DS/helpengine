@@ -44,6 +44,11 @@ using NasuTek.DevEnvironment.Extensibility;
 
 namespace DocExplorer.Resources
 {
+    public class BeforeInit : AbstractCommand {
+        public override void Run() {
+            
+        }
+    }
     public class Initialize : AbstractCommand
     {
         public override void Run()

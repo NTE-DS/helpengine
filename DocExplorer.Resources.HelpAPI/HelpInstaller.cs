@@ -16,17 +16,17 @@ namespace DocExplorer.Resources.HelpAPI {
         public static void CreateRegCollectionKey(string collectionName, string collectionPath) {
             if (!String.IsNullOrEmpty(collectionName)) {
 #if DEBUG
-                var kpl = Registry.LocalMachine.OpenSubKey("SOFTWARE\\NasuTek Enterprises\\Help\\5.0-Debug\\RegisteredCollections", true);
+                var kpl = Registry.LocalMachine.OpenSubKey("SOFTWARE\\NasuTek Enterprises\\Help\\5.2-Debug\\RegisteredCollections", true);
 #else
-                var kpl = Registry.LocalMachine.OpenSubKey("SOFTWARE\\NasuTek Enterprises\\Help\\5.0\\RegisteredCollections", true);
+                var kpl = Registry.LocalMachine.OpenSubKey("SOFTWARE\\NasuTek Enterprises\\Help\\5.2\\RegisteredCollections", true);
 #endif
                 kpl.SetValue(collectionName, collectionPath);
                 return;
             }
 #if DEBUG
-            Registry.LocalMachine.CreateSubKey("SOFTWARE\\NasuTek Enterprises\\Help\\5.0-Debug\\RegisteredCollections");
+            Registry.LocalMachine.CreateSubKey("SOFTWARE\\NasuTek Enterprises\\Help\\5.2-Debug\\RegisteredCollections");
 #else
-            Registry.LocalMachine.CreateSubKey("SOFTWARE\\NasuTek Enterprises\\Help\\5.0\\RegisteredCollections");
+            Registry.LocalMachine.CreateSubKey("SOFTWARE\\NasuTek Enterprises\\Help\\5.2\\RegisteredCollections");
 #endif
         }
 
@@ -39,9 +39,9 @@ namespace DocExplorer.Resources.HelpAPI {
             helpInstaller.CreateNamespace("NasuTek.Default.CC", "NasuTek Default Combined Collection", true, null, null);
 
 #if DEBUG
-            var kpl = Registry.LocalMachine.OpenSubKey("SOFTWARE\\NasuTek Enterprises\\Help\\5.0-Debug", true);
+            var kpl = Registry.LocalMachine.OpenSubKey("SOFTWARE\\NasuTek Enterprises\\Help\\5.2-Debug", true);
 #else
-            var kpl = Registry.LocalMachine.OpenSubKey("SOFTWARE\\NasuTek Enterprises\\Help\\5.0", true);
+            var kpl = Registry.LocalMachine.OpenSubKey("SOFTWARE\\NasuTek Enterprises\\Help\\5.2", true);
 #endif
 
             kpl.SetValue("InstallDir", installDir);
@@ -50,15 +50,15 @@ namespace DocExplorer.Resources.HelpAPI {
         public static void Uninstall()
         {
 #if DEBUG
-            var kpl = Registry.LocalMachine.OpenSubKey("SOFTWARE\\NasuTek Enterprises\\Help\\5.0-Debug", true);
+            var kpl = Registry.LocalMachine.OpenSubKey("SOFTWARE\\NasuTek Enterprises\\Help\\5.2-Debug", true);
 #else
-            var kpl = Registry.LocalMachine.OpenSubKey("SOFTWARE\\NasuTek Enterprises\\Help\\5.0", true);
+            var kpl = Registry.LocalMachine.OpenSubKey("SOFTWARE\\NasuTek Enterprises\\Help\\5.2", true);
 #endif
             var installDir = (string)kpl.GetValue("InstallDir");
 #if DEBUG
-            Registry.LocalMachine.DeleteSubKeyTree("SOFTWARE\\NasuTek Enterprises\\Help\\5.0-Debug");
+            Registry.LocalMachine.DeleteSubKeyTree("SOFTWARE\\NasuTek Enterprises\\Help\\5.2-Debug");
 #else
-            Registry.LocalMachine.DeleteSubKeyTree("SOFTWARE\\NasuTek Enterprises\\Help\\5.0");
+            Registry.LocalMachine.DeleteSubKeyTree("SOFTWARE\\NasuTek Enterprises\\Help\\5.2");
 #endif
             Directory.Delete(Path.Combine(installDir, "DefaultCollection"), true);
         }
